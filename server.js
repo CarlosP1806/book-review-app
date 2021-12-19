@@ -1,12 +1,13 @@
 const express = require('express');
+const routes = require('./controllers');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.send('hi');
-})
+app.set('view engine', 'ejs');
+app.use(routes);
+
 
 app.listen(PORT);
