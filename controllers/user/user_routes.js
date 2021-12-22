@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { authMiddleware, signToken } = require('../../utils/auth');
 const User = require('../../models/User');
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const user = await User.create(req.body);
 
   if (!user) {
