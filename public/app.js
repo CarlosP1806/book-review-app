@@ -1,4 +1,6 @@
 const navbarElement = document.querySelector('.navbar');
+const toggleMenuElement = document.querySelector('.toggle-menu');
+const navToggleMenuElement = document.querySelector('.nav-toggle-menu');
 
 const searchBookForm = document.querySelector('.search-book-form');
 const searchBookInput = document.querySelector('#book-name-input');
@@ -6,6 +8,14 @@ const searchBookInput = document.querySelector('#book-name-input');
 const loginForm = document.querySelector('.login-form');
 const usernameInput = document.querySelector('#username-input');
 const passwordInput = document.querySelector('#password-input');
+
+toggleMenuElement.addEventListener('click', () => {
+  navbarElement.classList.add('active');
+});
+
+navToggleMenuElement.addEventListener('click', () => {
+  navbarElement.classList.remove('active');
+});
 
 searchBookForm.addEventListener('submit', (event) => {
   event.preventDefault();
