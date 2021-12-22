@@ -43,13 +43,44 @@ loginForm.addEventListener('submit', async (event) => {
   }
 });
 
-function renderNavbar() {
-  const token = localStorage.getItem('id_token');
+async function renderNavbar() {
 
-  if (!!token)
+  const token = localStorage.getItem('id_token');
+  if (!token) {
+    navbarElement.innerHTML = 'not logged';
+    return;
+  }
+
+  const decoded = jwtDecode(token).payload;
+  console.log(decoded);
+  let isExpired
+  
+  console.log(decoded.exp);
+  console.log(Date.now()/1000);
+  try {
+    if (decoded.exp < Date.now() / 1000) {
+      console.log('expired');
+      isExpired = true;
+    }
+    else {
+      isExpired = false
+    }
+  } catch (err) {
+    isExpired = false;
+  }
+
+  if (!!token && !isExpired)
     navbarElement.innerHTML = 'logged in!';
   else
     navbarElement.innerHTML = 'not logged :(';
+}
+
+function jwtDecode(t) {
+  let token = {};
+  token.raw = t;
+  token.header = JSON.parse(window.atob(t.split('.')[0]));
+  token.payload = JSON.parse(window.atob(t.split('.')[1]));
+  return (token)
 }
 
 renderNavbar();

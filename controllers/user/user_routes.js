@@ -31,12 +31,12 @@ router.post('/login', async ({ body }, res) => {
 });
 
 // Get the current user data (if any)
-router.get('/me', authMiddleware, async ({ user=null, params}, res) => {
+router.get('/me', authMiddleware, async ({ user = null, params }, res) => {
   const foundUser = await User.findOne({
-    $or: [{ _id: user ? user._id : params.id }, { username: params.username}]
+    $or: [{ _id: user ? user._id : params.id }, { username: params.username }]
   });
 
-  if(!foundUser) {
+  if (!foundUser) {
     res.status(400).json({ message: 'Cannot find user' });
   } else {
     res.json(foundUser);
