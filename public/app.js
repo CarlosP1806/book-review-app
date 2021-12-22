@@ -43,44 +43,36 @@ loginForm.addEventListener('submit', async (event) => {
   }
 });
 
-async function renderNavbar() {
-
+function renderNavbar() {
   const token = localStorage.getItem('id_token');
   if (!token) {
     navbarElement.innerHTML = 'not logged';
     return;
   }
-
-  const decoded = jwtDecode(token).payload;
-  console.log(decoded);
-  let isExpired
-  
-  console.log(decoded.exp);
-  console.log(Date.now()/1000);
-  try {
-    if (decoded.exp < Date.now() / 1000) {
-      console.log('expired');
-      isExpired = true;
-    }
-    else {
-      isExpired = false
-    }
-  } catch (err) {
-    isExpired = false;
-  }
-
-  if (!!token && !isExpired)
+  if (!!token && !isExpired(token))
     navbarElement.innerHTML = 'logged in!';
   else
     navbarElement.innerHTML = 'not logged :(';
 }
 
-function jwtDecode(t) {
-  let token = {};
-  token.raw = t;
-  token.header = JSON.parse(window.atob(t.split('.')[0]));
-  token.payload = JSON.parse(window.atob(t.split('.')[1]));
-  return (token)
+// Decode a given JWT token
+function jwtDecode(token) {
+  let decoded = {};
+  decoded.raw = token;
+  decoded.header = JSON.parse(window.atob(token.split('.')[0]));
+  decoded.payload = JSON.parse(window.atob(token.split('.')[1]));
+  return (decoded)
+}
+
+// Determine if given JWT has expired
+function isExpired(token) {
+  try {
+    const decoded = jwtDecode(token).payload;
+    if (decoded.exp < Date.now() / 1000) return true;
+    return false;
+  } catch (err) {
+    return false;
+  }
 }
 
 renderNavbar();
