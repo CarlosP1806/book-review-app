@@ -46,13 +46,13 @@ loginForm.addEventListener('submit', async (event) => {
 function renderNavbar() {
   const token = localStorage.getItem('id_token');
   if (!token) {
-    navbarElement.innerHTML = 'not logged';
+  //  navbarElement.innerHTML = 'not logged';
     return;
   }
-  if (!!token && !isExpired(token))
-    navbarElement.innerHTML = 'logged in!';
-  else
-    navbarElement.innerHTML = 'not logged :(';
+  // if (!!token && !isExpired(token))
+  //   navbarElement.innerHTML = 'logged in!';
+  // else
+  //   navbarElement.innerHTML = 'not logged :(';
 }
 
 // Decode a given JWT token
