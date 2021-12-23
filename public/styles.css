@@ -38,6 +38,11 @@ header .logo {
     font-size: var(--big-text);
 }
 
+header .logo a {
+    color: inherit;
+    text-decoration: none;
+}
+
 nav .login-required {
     display: none;
 }
