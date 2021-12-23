@@ -38,6 +38,18 @@ header .logo {
     font-size: var(--big-text);
 }
 
+nav .login-required {
+    display: none;
+}
+
+nav.logged .nav-item {
+    display: none;
+}
+
+nav.logged .login-required {
+    display: inline-block;
+}
+
 nav .nav-ul {
     display: flex;
 }

@@ -14,7 +14,12 @@ navToggleMenuElement.addEventListener('click', () => {
 });
 
 function renderNavbar() {
-  console.log(loggedIn());
+  if(loggedIn()) {
+    navbarElement.classList.add('logged');
+  }
+  else {
+    navbarElement.classList.remove('logged');
+  }
 }
 
 renderNavbar();
