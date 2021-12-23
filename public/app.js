@@ -35,7 +35,8 @@ loginForm.addEventListener('submit', async (event) => {
     console.log(user);
 
     localStorage.setItem('id_token', token);
-    window.location.assign('/');
+    window.location.href = '/';    
+
   } catch (err) {
     console.log(err);
   }

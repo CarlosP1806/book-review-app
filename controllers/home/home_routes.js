@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { authMiddleware, signToken } = require('../../utils/auth');
 const axios = require('axios');
 require('dotenv').config();
 

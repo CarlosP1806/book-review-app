@@ -149,9 +149,16 @@ nav .nav-toggle-menu {
 }
 
 .search-book-form {
-    transform: translateY(20%);
+    width: 100%;
+    display: relative;
+}
+
+.form-wrapper {
     width: 80%;
-    margin: 0 auto;
+    position: absolute;
+    top: 28%; 
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .search-label {
@@ -194,16 +201,16 @@ nav .nav-toggle-menu {
 }
 
 @media screen and (max-width: 1000px) {
-    .search-book-form {
-        transform: translateY(15%);
+    .form-wrapper {
+        top: 25%;
     }
 }
 
 @media screen and (max-width: 700px) {
-    .search-book-form {
-        transform: translateY(10%);
+    .form-wrapper {
+        top: 20%;
     }
-    
+
     .search-bar {
         width: 100%;
     }
