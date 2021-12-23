@@ -1,4 +1,4 @@
-import { loggedIn, jwtDecode }  from './auth.js';
+import { loggedIn, logout } from './auth.js';
 
 const navbarElement = document.querySelector('.navbar');
 const toggleMenuElement = document.querySelector('.toggle-menu');
@@ -11,6 +11,14 @@ toggleMenuElement.addEventListener('click', () => {
 
 navToggleMenuElement.addEventListener('click', () => {
   navbarElement.classList.remove('active');
+});
+
+navbarElement.addEventListener('click', (event) => {
+  if(loggedIn()) {
+    if(event.target.id === '#logout') {
+      logout();
+    }
+  }
 });
 
 function renderNavbar() {
