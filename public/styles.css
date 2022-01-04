@@ -255,11 +255,21 @@ nav .nav-toggle-menu {
     font-weight: normal;
     font-size: var(--small-text);
     color: var(--text-light);
+    margin-bottom: 1em;
 }
 
 #search-title {
     color: var(--text-light);
     font-weight: 600;
+}
+
+.small-form-wrapper {
+    width: 100%;
+}
+
+.small-form-wrapper .search-bar {
+    width: 100%;
+    margin: 0;
 }
 
 
