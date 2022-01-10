@@ -7,7 +7,7 @@ const passwordInput = document.querySelector('#password-input');
 
 searchBookForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  document.location.href = `/search/${searchBookInput.value}`;
+  document.location.href = `/search/${searchBookInput.value}/1`;
 });
 
 loginForm.addEventListener('submit', async (event) => {

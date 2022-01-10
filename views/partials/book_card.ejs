@@ -1,0 +1,12 @@
+<div class="card">
+  <aside class="card-image">
+    <img src="<%=bookData.volumeInfo.imageLinks.thumbnail %>" alt="Book cover">
+  </aside>
+  <article class="card-info">
+    <h2 class="card-title"><%= bookData.volumeInfo.title %></h2>
+    
+    <!-- Get only first 255 characters of description -->
+    <% let bookDesc = bookData.volumeInfo.description %>
+    <p class="book-description"><%= bookDesc.substring(0, 255) %></p>
+  </article>
+</div>
