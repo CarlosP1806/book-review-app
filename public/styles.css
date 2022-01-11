@@ -101,6 +101,72 @@ nav .nav-toggle-menu {
     font-size: 1.5rem;
 }
 
+/* Modals */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 800px;
+    max-width: 80%;
+    background: var(--second-color);
+    padding: 5em;
+    z-index: 100;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1);
+    transition: .5s ease-in-out;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-title {
+    margin-bottom: 1em;
+}
+
+.modal input {
+    margin-top: .2em;
+    width: 100%;
+    padding: .2em;
+}
+
+.modal-btn {
+    margin-top: 1em;
+    padding: .2em .5em;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: whitesmoke;
+    color: var(--second-color);
+    cursor: pointer;
+}
+
+.modal-message {
+    display: none;
+}
+.modal-message.active {
+    display: inline-block;
+}
+
+.overlay {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+
+.overlay.active {
+    z-index: 10;
+    opacity: 1;
+    pointer-events: all;
+}
+
 /* Make nav responsive */
 @media screen and (max-width: 700px) {
     .toggle-menu {

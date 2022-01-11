@@ -1,6 +1,8 @@
 const searchBookForm = document.querySelector('.search-book-form');
 const searchBookInput = document.querySelector('#book-name-input');
 
+const loginModal = document.querySelector('#login-modal');
+
 const loginForm = document.querySelector('.login-form');
 const usernameInput = document.querySelector('#username-input');
 const passwordInput = document.querySelector('#password-input');
@@ -28,6 +30,8 @@ loginForm.addEventListener('submit', async (event) => {
     });
 
     if (!response.ok) {
+      const message = loginModal.querySelector('.modal-message');
+      message.classList.add('active');
       throw new Error('something went wrong');
     }
 
