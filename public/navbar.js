@@ -24,11 +24,15 @@ navbarElement.addEventListener('click', (event) => {
     if(event.target.id === 'login') {
       openModal('#login-modal');
     }
+    if(event.target.id === 'sign-up') {
+      openModal('#signup-modal');
+    }
   }
 });
 
 overlayElement.addEventListener('click', () => {
   closeModal('#login-modal');
+  closeModal('#signup-modal');
 })
 
 // Handle open and close modal
@@ -46,9 +50,13 @@ function closeModal(modal) {
   overlayElement.classList.remove('active');
 }
 
-const closeModalButton = document.querySelector('.modal-close');
-closeModalButton.addEventListener('click', () => {
+const closeLoginModalButton = document.querySelector('.login-modal-close');
+closeLoginModalButton.addEventListener('click', () => {
   closeModal('#login-modal');
+});
+const closeSignupModalButton = document.querySelector('.signup-modal-close');
+closeSignupModalButton.addEventListener('click', () => {
+  closeModal('#signup-modal');
 });
 
 // Render navbar depending on user logged in

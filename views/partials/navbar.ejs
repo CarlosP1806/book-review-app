@@ -22,7 +22,7 @@
 <article class="modal" id="login-modal">
   <div class="modal-header">
     <h2 class="modal-title">Login To Account</h2>
-    <i class="fa fa-times modal-close"></i>
+    <i class="fa fa-times login-modal-close"></i>
   </div>
   <div class="modal-message">
     <p>Invalid Credentials!</p>
@@ -36,5 +36,28 @@
     <input type="password" id="password-input">
 
     <button class="modal-btn">Login</button>
+  </form>
+</article>
+
+<div class="overlay"></div>
+<article class="modal" id="signup-modal">
+  <div class="modal-header">
+    <h2 class="modal-title">Create Account</h2>
+    <i class="fa fa-times signup-modal-close"></i>
+  </div>
+  <div class="modal-message">
+    <p>Invalid Fields!</p>
+  </div>
+  <form class="login-form">
+    <label for="sign-email-input">Enter email</label>
+    <input type="text" id="sign-email-input">
+
+    <label for="username-input">Enter username</label>
+    <input type="text" id="sign-username-input">
+
+    <label for="password-input">Enter password</label>
+    <input type="password" id="sign-password-input">
+
+    <button class="modal-btn">Sign Up</button>
   </form>
 </article>
