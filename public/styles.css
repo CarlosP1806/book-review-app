@@ -129,6 +129,10 @@ nav .nav-toggle-menu {
     margin-bottom: 1em;
 }
 
+.modal-title {
+    font-size: var(--big-text);
+}
+
 .modal-header i {
     font-size: 1.2rem;
     cursor: pointer;
@@ -438,5 +442,6 @@ nav .nav-toggle-menu {
 
     .card-image img {
         border-radius: 5px 5px 0 0;
+        object-fit: cover;
     }
 }
