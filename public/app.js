@@ -1,13 +1,15 @@
 const searchBookForm = document.querySelector('.search-book-form');
 const searchBookInput = document.querySelector('#book-name-input');
 
+const loginModal = document.querySelector('#login-modal');
+
 const loginForm = document.querySelector('.login-form');
 const usernameInput = document.querySelector('#username-input');
 const passwordInput = document.querySelector('#password-input');
 
 searchBookForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  document.location.href = `/search/${searchBookInput.value}`;
+  document.location.href = `/search/${searchBookInput.value}/1`;
 });
 
 loginForm.addEventListener('submit', async (event) => {
@@ -28,7 +30,9 @@ loginForm.addEventListener('submit', async (event) => {
     });
 
     if (!response.ok) {
-      throw new Error('something went wrong');
+      const message = loginModal.querySelector('.modal-message');
+      message.classList.add('active');
+      throw new Error('Invalid Credentials');
     }
 
     const { token, user } = await response.json();

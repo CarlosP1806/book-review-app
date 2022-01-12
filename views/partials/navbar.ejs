@@ -1,0 +1,63 @@
+<!-- Navbar -->
+<header>
+  <h1 class="logo"><a href="/">Rate Reads</a></h1>
+  <div class="toggle-menu">
+    <i class="fa fa-bars"></i>
+  </div>
+  <nav class="navbar">
+    <ul class="nav-ul">
+      <li class="nav-item"><a id="login">Login</a></li>
+      <li class="nav-item"><a id="sign-up">Sign up</a></li>
+      <li class="nav-item login-required"><a>View Books</a></li>
+      <li class="nav-item login-required"><a id="logout">Logout</a></li>
+      <div class="nav-toggle-menu">
+        <i class="fa fa-bars"></i>
+      </div>
+    </ul>
+  </nav>
+</header>
+
+<!-- Login/Sign up forms -->
+<div class="overlay"></div>
+<article class="modal" id="login-modal">
+  <div class="modal-header">
+    <h2 class="modal-title">Login To Account</h2>
+    <i class="fa fa-times login-modal-close"></i>
+  </div>
+  <div class="modal-message">
+    <p>Invalid Credentials!</p>
+  </div>
+  <form class="login-form">
+    <label for="username-input">Enter username</label>
+    <br>
+    <input type="text" id="username-input">
+
+    <label for="password-input">Enter password</label>
+    <input type="password" id="password-input">
+
+    <button class="modal-btn">Login</button>
+  </form>
+</article>
+
+<div class="overlay"></div>
+<article class="modal" id="signup-modal">
+  <div class="modal-header">
+    <h2 class="modal-title">Create Account</h2>
+    <i class="fa fa-times signup-modal-close"></i>
+  </div>
+  <div class="modal-message">
+    <p>Invalid Fields!</p>
+  </div>
+  <form class="login-form">
+    <label for="sign-email-input">Enter email</label>
+    <input type="text" id="sign-email-input">
+
+    <label for="username-input">Enter username</label>
+    <input type="text" id="sign-username-input">
+
+    <label for="password-input">Enter password</label>
+    <input type="password" id="sign-password-input">
+
+    <button class="modal-btn">Sign Up</button>
+  </form>
+</article>

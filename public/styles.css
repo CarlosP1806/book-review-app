@@ -101,6 +101,87 @@ nav .nav-toggle-menu {
     font-size: 1.5rem;
 }
 
+/* Modals */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 600px;
+    max-width: 80%;
+    background: var(--second-color);
+    padding: 3em 5em;
+    z-index: 1000;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1);
+    transition: .5s ease-in-out;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.modal-title {
+    font-size: var(--big-text);
+}
+
+.modal-header i {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.modal input {
+    margin: .2em 0 .5em;
+    width: 100%;
+    padding: .2em;
+}
+
+.modal-btn {
+    margin-top: .5em;
+    padding: .2em .5em;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: whitesmoke;
+    color: var(--second-color);
+    cursor: pointer;
+}
+
+.modal-message {
+    display: none;
+    margin-bottom: 1em;
+    color: var(--main-color);
+    font-style: italic;
+}
+.modal-message.active {
+    display: inline-block;
+}
+
+.overlay {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+
+.overlay.active {
+    z-index: 1000;
+    opacity: 1;
+    pointer-events: all;
+}
+
 /* Make nav responsive */
 @media screen and (max-width: 700px) {
     .toggle-menu {
@@ -156,6 +237,10 @@ nav .nav-toggle-menu {
     nav.active .nav-toggle-menu i {
         color: white;
         font-size: 1.2rem;
+    }
+
+    .modal {
+        padding: 3em 1em;
     }
 }
 
@@ -255,11 +340,21 @@ nav .nav-toggle-menu {
     font-weight: normal;
     font-size: var(--small-text);
     color: var(--text-light);
+    margin-bottom: 1em;
 }
 
 #search-title {
     color: var(--text-light);
     font-weight: 600;
+}
+
+.small-form-wrapper {
+    width: 100%;
+}
+
+.small-form-wrapper .search-bar {
+    width: 100%;
+    margin: 0;
 }
 
 
@@ -308,6 +403,22 @@ nav .nav-toggle-menu {
     color: var(--text-light);
 }
 
+.load-btn {
+    border: none;
+    outline: none;
+    background: var(--second-color);
+    color: white;
+    font-size: var(--small-text);
+    padding: .5em 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+
+.load-btn:hover {
+    letter-spacing: 1.5px;
+}
+
 @media screen and (max-width: 1000px) {
     .search-main {
         flex-direction: column;
@@ -331,5 +442,6 @@ nav .nav-toggle-menu {
 
     .card-image img {
         border-radius: 5px 5px 0 0;
+        object-fit: cover;
     }
 }
