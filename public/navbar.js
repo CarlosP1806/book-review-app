@@ -2,7 +2,7 @@ import { loggedIn, logout } from './auth.js';
 
 const navbarElement = document.querySelector('.navbar');
 const toggleMenuElement = document.querySelector('.toggle-menu');
-const navToggleMenuElement = document.querySelector('.nav-toggle-menu');
+const activeToggleMenuElement = document.querySelector('.active-toggle-menu');
 const overlayElement = document.querySelector('.overlay');
 
 // Respond to menu click (responsive nav)
@@ -10,11 +10,12 @@ toggleMenuElement.addEventListener('click', () => {
   navbarElement.classList.add('active');
 });
 
-// Respond to menu click when responsive nav is displayed
-navToggleMenuElement.addEventListener('click', () => {
+// Respond to menu click when responsive nav is active
+activeToggleMenuElement.addEventListener('click', () => {
   navbarElement.classList.remove('active');
 });
 
+// Respond to clicks on links in navbar
 navbarElement.addEventListener('click', (event) => {
   if(loggedIn()) {
     if(event.target.id === 'logout') {
@@ -30,6 +31,7 @@ navbarElement.addEventListener('click', (event) => {
   }
 });
 
+// Respond to clicks on screen to close modal
 overlayElement.addEventListener('click', () => {
   closeModal('#login-modal');
   closeModal('#signup-modal');
@@ -54,12 +56,53 @@ const closeLoginModalButton = document.querySelector('.login-modal-close');
 closeLoginModalButton.addEventListener('click', () => {
   closeModal('#login-modal');
 });
+
 const closeSignupModalButton = document.querySelector('.signup-modal-close');
 closeSignupModalButton.addEventListener('click', () => {
   closeModal('#signup-modal');
 });
 
-// Render navbar depending on user logged in
+// Hanlde login system
+const loginModal = document.querySelector('#login-modal');
+const loginForm = document.querySelector('.login-form');
+const loginUsernameInput = document.querySelector('#username-input');
+const loginPasswordInput = document.querySelector('#password-input');
+
+loginForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const userData = {
+    "username": loginUsernameInput.value,
+    "password": loginPasswordInput.value
+  };
+
+  try {
+    const response = await fetch('/user/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userData)
+    });
+
+    if (!response.ok) {
+      const message = loginModal.querySelector('.modal-message');
+      message.classList.add('active');
+      throw new Error('Invalid Credentials');
+    }
+
+    const { token, user } = await response.json();
+    console.log(user);
+
+    localStorage.setItem('id_token', token);
+    window.location.href = '/';    
+
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// Render navbar elements depending on user logged in
 function renderNavbar() {
   if(loggedIn()) {
     navbarElement.classList.add('logged');
@@ -69,4 +112,5 @@ function renderNavbar() {
   }
 }
 
+// Render navbar on each load of view
 renderNavbar();
