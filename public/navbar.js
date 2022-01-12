@@ -22,18 +22,34 @@ navbarElement.addEventListener('click', (event) => {
     }
   } else {
     if(event.target.id === 'login') {
-      overlayElement.classList.add('active');
-      const loginModal = document.querySelector('#login-modal');
-      loginModal.classList.add('active');
+      openModal('#login-modal');
     }
   }
 });
 
 overlayElement.addEventListener('click', () => {
-  const loginModal = document.querySelector('#login-modal');
-  loginModal.classList.remove('active');
-  overlayElement.classList.remove('active');
+  closeModal('#login-modal');
 })
+
+// Handle open and close modal
+function openModal(modal) {
+  const currentModal = document.querySelector(modal);
+  currentModal.classList.add('active');
+  overlayElement.classList.add('active');
+}
+
+function closeModal(modal) {
+  const currentModal = document.querySelector(modal);
+  const modalMessage = currentModal.querySelector('.modal-message');
+  currentModal.classList.remove('active');
+  modalMessage.classList.remove('active');
+  overlayElement.classList.remove('active');
+}
+
+const closeModalButton = document.querySelector('.modal-close');
+closeModalButton.addEventListener('click', () => {
+  closeModal('#login-modal');
+});
 
 // Render navbar depending on user logged in
 function renderNavbar() {

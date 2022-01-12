@@ -32,7 +32,7 @@ loginForm.addEventListener('submit', async (event) => {
     if (!response.ok) {
       const message = loginModal.querySelector('.modal-message');
       message.classList.add('active');
-      throw new Error('something went wrong');
+      throw new Error('Invalid Credentials');
     }
 
     const { token, user } = await response.json();

@@ -107,11 +107,11 @@ nav .nav-toggle-menu {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    width: 800px;
+    width: 600px;
     max-width: 80%;
     background: var(--second-color);
-    padding: 5em;
-    z-index: 100;
+    padding: 3em 5em;
+    z-index: 1000;
     color: white;
     border-radius: 5px;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1);
@@ -122,18 +122,26 @@ nav .nav-toggle-menu {
     transform: translate(-50%, -50%) scale(1);
 }
 
-.modal-title {
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1em;
 }
 
+.modal-header i {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
 .modal input {
-    margin-top: .2em;
+    margin: .2em 0 .5em;
     width: 100%;
     padding: .2em;
 }
 
 .modal-btn {
-    margin-top: 1em;
+    margin-top: .5em;
     padding: .2em .5em;
     outline: none;
     border: none;
@@ -145,6 +153,9 @@ nav .nav-toggle-menu {
 
 .modal-message {
     display: none;
+    margin-bottom: 1em;
+    color: var(--main-color);
+    font-style: italic;
 }
 .modal-message.active {
     display: inline-block;
@@ -162,7 +173,7 @@ nav .nav-toggle-menu {
 }
 
 .overlay.active {
-    z-index: 10;
+    z-index: 1000;
     opacity: 1;
     pointer-events: all;
 }
@@ -222,6 +233,10 @@ nav .nav-toggle-menu {
     nav.active .nav-toggle-menu i {
         color: white;
         font-size: 1.2rem;
+    }
+
+    .modal {
+        padding: 3em 1em;
     }
 }
 
