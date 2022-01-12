@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { authMiddleware, signToken } = require('../../utils/auth');
 const axios = require('axios');
 require('dotenv').config();
 
@@ -15,6 +16,8 @@ router.get('/search/:title', (req, res) => {
   })
     .then(response => {
       bookData = response.data.items;
+      //console.log(bookData);
+      //console.log(bookData[0].volumeInfo.authors);
       res.render('search_results', { title: req.params.title, bookData: bookData });
     });
 })

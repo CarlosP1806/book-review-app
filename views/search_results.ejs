@@ -6,20 +6,65 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rate Reads</title>
+
+  <link rel="stylesheet" href="/styles.css">
+  
+  <!-- Import font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-  <h1>Hello, search results</h1>
-  <p>Displaying results for <%= locals.title %>
-  </p>
-  <% for(let i=0; i < 10; i++) {%>
-    <% if(locals.bookData[i].volumeInfo) { %>
-      <div class="card">
-        <h2 class="card-title"><%= locals.bookData[i].volumeInfo.title %></h2>
-        <p class="card-description"><%= locals.bookData[i].volumeInfo.description %></p>
-      </div>
-    <% } %>
-  <% } %>
+  <header>
+    <h1 class="logo"><a href="/">Rate Reads</a></h1>
+    <div class="toggle-menu">
+      <i class="fa fa-bars"></i>
+    </div>
+    <nav class="navbar">
+      <ul class="nav-ul">
+        <li class="nav-item"><a>Login</a></li>
+        <li class="nav-item"><a>Sign up</a></li>
+        <li class="nav-item login-required"><a>View Books</a></li>
+        <li class="nav-item login-required"><a id="#logout">Logout</a></li>
+        <div class="nav-toggle-menu">
+          <i class="fa fa-bars"></i>
+        </div>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="search-main">
+    <aside class="search-container">
+      <h2>Displaying results for: <span id="search-title"><%= locals.title %></span></h2>
+    </aside>
+
+    <!-- Display each result as card -->
+    <section class="card-container">
+      <% for(let i=0; i < 10; i++) {%>
+        <% if(locals.bookData[i].volumeInfo && locals.bookData[i].searchInfo) { %>
+          <div class="card">
+            <aside class="card-image">
+              <% if(locals.bookData[i].volumeInfo.imageLinks) {%>
+               <img src="<%=locals.bookData[i].volumeInfo.imageLinks.thumbnail %>" alt="cover"> 
+              <% } %>
+            </aside>
+            <article class="card-info">
+              <h2 class="card-title"><%= locals.bookData[i].volumeInfo.title %></h2>
+              <!-- Get only first characters of description -->
+              <% let bookDesc = locals.bookData[i].volumeInfo.description %>
+              <% if(bookDesc) { %>
+                <p class="card-description">
+                  <%= bookDesc.substring(0,255)%>
+                  . . .
+                </p>
+              <% } %>
+            </article>
+          </div>
+        <% } %>
+      <% } %>
+    </section>
+  </main>
+  
+  <script type="module" src="/navbar.js"></script>
 </body>
 
 </html>

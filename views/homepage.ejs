@@ -7,24 +7,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rate Reads</title>
   <link rel="stylesheet" href="/styles.css">
+
+  <!-- Import font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
+  <header>
+    <h1 class="logo"><a href="/">Rate Reads</a></h1>
+    <div class="toggle-menu">
+      <i class="fa fa-bars"></i>
+    </div>
+    <nav class="navbar">
+      <ul class="nav-ul">
+        <li class="nav-item"><a>Login</a></li>
+        <li class="nav-item"><a>Sign up</a></li>
+        <li class="nav-item login-required"><a>View Books</a></li>
+        <li class="nav-item login-required"><a id="#logout">Logout</a></li>
+        <div class="nav-toggle-menu">
+          <i class="fa fa-bars"></i>
+        </div>
+      </ul>
+    </nav>
+  </header>
 
-  <nav class="navbar">
-    Are you currently logged in?
-  </nav>
+  <section class="banner">
+    <form class="search-book-form">
+      <div class="form-wrapper">
+        <label for="book-name-input" class="search-label">
+          <h2>Discover your new favorite book</h2>
+        </label>
+        <div class="search-bar">
+          <input type="text" id="book-name-input" placeholder="Explore titles">
+          <button class="search-button"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </form>
+  </section>
 
-  <h1>Rate Reads</h1>
-
-  <form class="search-book-form">
-    <label for="book-name-input">Enter book name</label>
-    <input type="text" id="book-name-input">
-  </form>
-  
   <h2>Login Form</h2>
   <form class="login-form">
     <label for="username-input">Enter username</label>
+    <br>
     <input type="text" id="username-input">
 
     <label for="password-input">Enter password</label>
@@ -33,7 +57,9 @@
     <button>Submit</button>
   </form>
 
+
   <script src="/app.js"></script>
+  <script type="module" src="/navbar.js"></script>
 </body>
 
 </html>
