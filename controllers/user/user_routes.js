@@ -24,7 +24,8 @@ router.post('/login', async ({ body }, res) => {
     res.status(400).json({ message: 'Cannot find user' });
   } else {
     // Validate password
-    if (body.password !== user.password) {
+    const correctPassword = await user.isCorrectPassword(body.password);
+    if (!correctPassword) {
       res.status(400).json({ message: 'Incorrect password' });
     } else {
       const token = signToken(user);
