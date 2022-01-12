@@ -3,14 +3,17 @@ const { authMiddleware, signToken } = require('../../utils/auth');
 const User = require('../../models/User');
 
 router.post('/', async (req, res) => {
-  const user = await User.create(req.body);
-
-  if (!user) {
-    res.status(400).json({ message: 'Something went wrong' });
+  try {
+    const user = await User.create(req.body);
+    if (!user) {
+      res.status(400).json({ message: 'Something went wrong' });
+    }
+    const token = signToken(user);
+    res.json({ token, user });
+  } catch(error) {
+    console.log(error);
+    res.status(500).json({ message: 'Invalid fields '});
   }
-
-  const token = signToken(user);
-  res.json({ token, user });
 });
 
 router.post('/login', async ({ body }, res) => {

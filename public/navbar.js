@@ -102,6 +102,48 @@ loginForm.addEventListener('submit', async (event) => {
   }
 });
 
+// Handle sign up system
+const signupModal = document.querySelector('#signup-modal');
+const signupForm = document.querySelector('.signup-form');
+const signEmailInput = document.querySelector('#sign-email-input');
+const signUserInput = document.querySelector('#sign-username-input');
+const signPasswordInput = document.querySelector('#sign-password-input');
+
+signupForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const userData = {
+    "email": signEmailInput.value,
+    "username": signUserInput.value,
+    "password": signPasswordInput.value
+  };
+
+  try {
+    const response = await fetch('/user/', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(userData)
+    });
+
+    if(!response.ok) {
+      const message = signupModal.querySelector('.modal-message');
+      message.classList.add('active');
+      throw new Error('Invalid Fields');
+    }
+
+    const { token, user } = await response.json();
+    console.log(user);
+
+    localStorage.setItem('id_token', token);
+    window.location.href= '/';
+
+  } catch(error) {
+    console.log(error);
+  }
+});
+
 // Render navbar elements depending on user logged in
 function renderNavbar() {
   if(loggedIn()) {
