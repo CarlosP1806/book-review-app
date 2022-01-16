@@ -1,9 +1,8 @@
 const router = require('express').Router();
-const { authMiddleware, signToken } = require('../../utils/auth');
 const axios = require('axios');
 require('dotenv').config();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   res.render('homepage');
 });
 
