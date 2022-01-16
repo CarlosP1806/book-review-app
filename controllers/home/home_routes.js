@@ -18,6 +18,10 @@ router.get('/search/:title/:cnt', (req, res) => {
       bookData = response.data.items;
       res.render('search_results', { title: req.params.title, bookData: bookData, maxCount: req.params.cnt * 10 });
     });
-})
+});
+
+router.get('/saved', (req, res) => {
+  res.render('user_info');
+});
 
 module.exports = router;

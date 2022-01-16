@@ -20,6 +20,11 @@
     --main-color: #1C0760;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 @media screen and (max-width: 700px) {
     :root {
         --big-text: 1.5rem;

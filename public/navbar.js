@@ -1,4 +1,4 @@
-import { loggedIn, logout } from './auth.js';
+import { getToken, loggedIn, logout } from './auth.js';
 
 const navbarElement = document.querySelector('.navbar');
 const toggleMenuElement = document.querySelector('.toggle-menu');
