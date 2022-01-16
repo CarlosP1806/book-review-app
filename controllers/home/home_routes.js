@@ -2,7 +2,9 @@ const router = require('express').Router();
 const axios = require('axios');
 require('dotenv').config();
 
-router.get('/', async (req, res) => {
+const Review = require('../../models/Review');
+
+router.get('/', (req, res) => {
   res.render('homepage');
 });
 
@@ -15,6 +17,7 @@ router.get('/search/:title/:cnt', (req, res) => {
   })
     .then(response => {
       const bookData = response.data.items;
+      console.log(bookData[0]);
       res.render('search_results', { title: req.params.title, bookData: bookData, maxCount: req.params.cnt * 10 });
     });
 });
@@ -23,15 +26,17 @@ router.get('/saved', (req, res) => {
   res.render('user_info');
 });
 
-router.get('/book/:id', (req, res) => {
+router.get('/book/:id', async (req, res) => {
   const fetchURL = `https://www.googleapis.com/books/v1/volumes/${req.params.id}`;
   axios({
     url: fetchURL,
     responseType: 'json'
   })
-    .then(response => {
+    .then(async response => {
       const bookData = response.data;
-      res.render('book_info', { bookData: bookData });
+      const reviews = await Review.find({bookId: bookData.id});
+
+      res.render('book_info', { bookData: bookData, reviews: reviews });
     });
 });
 

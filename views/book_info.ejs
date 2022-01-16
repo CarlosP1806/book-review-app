@@ -21,5 +21,17 @@
     <p><%= bookData.volumeInfo.description %></p>
   </article>
 
+  <section class="review-container">
+    <% if(reviews.length) { %>
+      <% for(let i = 0; i < reviews.length; i++) { %>
+        <article class="review">
+          <p class="review-text"><%= reviews[i].textContent %></p>
+        </article>
+      <% } %>
+    <% } else {%>
+      <h2>No Reviews Yet</h2>
+    <% } %>
+  </section>
+
   <script type="module" src="/navbar.js"></script>
 </body>
