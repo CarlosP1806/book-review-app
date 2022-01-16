@@ -7,5 +7,6 @@
     <!-- Get only first 255 characters of description -->
     <% let bookDesc = bookData.volumeInfo.description %>
     <p class="book-description"><%= bookDesc.substring(0, 255) %> . . .</p>
+    <button id="<%= bookData.id %>" class="view-more-btn">View More</button>
   </article>
 </div>

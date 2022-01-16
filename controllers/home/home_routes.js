@@ -15,13 +15,25 @@ router.get('/search/:title/:cnt', (req, res) => {
     responseType: 'json'
   })
     .then(response => {
-      bookData = response.data.items;
+      const bookData = response.data.items;
       res.render('search_results', { title: req.params.title, bookData: bookData, maxCount: req.params.cnt * 10 });
     });
 });
 
 router.get('/saved', (req, res) => {
   res.render('user_info');
+});
+
+router.get('/book/:id', (req, res) => {
+  const fetchURL = `https://www.googleapis.com/books/v1/volumes/${req.params.id}`;
+  axios({
+    url: fetchURL,
+    responseType: 'json'
+  })
+    .then(response => {
+      const bookData = response.data;
+      res.render('book_info', { bookData: bookData });
+    });
 });
 
 module.exports = router;
