@@ -17,7 +17,6 @@ router.get('/search/:title/:cnt', (req, res) => {
   })
     .then(response => {
       const bookData = response.data.items;
-      console.log(bookData[0]);
       res.render('search_results', { title: req.params.title, bookData: bookData, maxCount: req.params.cnt * 10 });
     });
 });
@@ -34,8 +33,12 @@ router.get('/book/:id', async (req, res) => {
   })
     .then(async response => {
       const bookData = response.data;
-      const reviews = await Review.find({bookId: bookData.id});
 
+      // Remove google books html tags using regex
+      bookData.volumeInfo.description = 
+        bookData.volumeInfo.description.replaceAll(/<\/?\w+>/ig,'');
+
+      const reviews = await Review.find({bookId: bookData.id});
       res.render('book_info', { bookData: bookData, reviews: reviews });
     });
 });
