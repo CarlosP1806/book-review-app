@@ -9,9 +9,11 @@ searchBookForm.addEventListener('submit', (event) => {
 });
 
 // Handle clicks on 'view more' buttons via event delegation
-cardContainerElement.addEventListener('click', event => {
-  event.preventDefault();
-  if(event.target.classList.contains('view-more-btn')) {
-    document.location.href = `/book/${event.target.id}`;
-  }
-});
+if (cardContainerElement) {
+  cardContainerElement.addEventListener('click', event => {
+    event.preventDefault();
+    if (event.target.classList.contains('view-more-btn')) {
+      document.location.href = `/book/${event.target.id}`;
+    }
+  });
+}
