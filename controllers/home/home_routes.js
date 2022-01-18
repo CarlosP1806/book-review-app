@@ -43,4 +43,24 @@ router.get('/book/:id', async (req, res) => {
     });
 });
 
+router.get('/book/:id/review', (req, res) => {
+  const fetchURL = `https://www.googleapis.com/books/v1/volumes/${req.params.id}`;
+  axios({
+    url: fetchURL,
+    responseType: 'json'
+  })
+    .then(response => {
+      const bookData = response.data;
+      res.render('write_review', { bookData: bookData });
+    })
+});
+
+router.post('/review', async (req, res) => {
+  const review = await Review.create(req.body);
+  if(!review) {
+    res.status(400).json({ message: 'something went wrong' });
+  }
+  res.json(review);
+});
+
 module.exports = router;

@@ -6,7 +6,7 @@
     <h2 class="card-title"><%= bookData.volumeInfo.title %></h2>
     <!-- Get only first 255 characters of description -->
     <% let bookDesc = bookData.volumeInfo.description %>
-    <p class="book-description"><%= bookDesc.substring(0, 255) %> . . .</p>
-    <button id="<%= bookData.id %>" class="view-more-btn">View More</button>
+    <p class="card-description"><%= bookDesc.substring(0, 255) %> . . .</p>
+    <button id="<%= bookData.id %>" class="view-more-btn btn-small">View More</button>
   </article>
 </div>
