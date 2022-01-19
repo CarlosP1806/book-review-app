@@ -17,10 +17,10 @@
     --text-dark: rgb(40,40,40);
     --text-light: rgb(70,70,70);
     --text-white: rgb(221, 221, 221);
-    /*--secondary-color: #e0ba04;*/
-    --secondary-color: #ffd500;
-    --accent-color: #4d3ddf;
-    --main-color: #16005e;
+    /*--accent-color: #e0ba04;*/
+    --accent-color: #ffd500;
+    --main-light-color: #4d3ddf;
+    --main-dark-color: #16005e;
 }
 
 a {
@@ -43,7 +43,7 @@ header {
     box-shadow: 0 2px 5px 2px rgba(0,0,0,0.1);
     align-items: center;
     justify-content: space-between;
-    color: var(--main-color);
+    color: var(--main-dark-color);
     position: relative;
     overflow-x: hidden;
 }
@@ -57,6 +57,7 @@ header .logo a {
     text-decoration: none;
 }
 
+/* Render elements according to nav log state */
 nav .login-required {
     display: none;
 }
@@ -86,7 +87,7 @@ nav .nav-text {
 }
 
 nav .nav-text:hover {
-    color: var(--accent-color);
+    color: var(--main-light-color);
 }
 
 nav .nav-text::after {
@@ -96,7 +97,7 @@ nav .nav-text::after {
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: var(--accent-color);
+    background-color: var(--main-light-color);
     content: '';
     transform: scale(0);
     transition: .2s ease-in-out;
@@ -108,9 +109,9 @@ nav .nav-text:hover::after {
 
 nav .nav-highlight {
     border-radius: 15px;
-    padding: .5em 1em;
+    padding: .5em 1.2em;
     color: whitesmoke;
-    background: var(--accent-color);
+    background: var(--main-light-color);
     transition: .2s ease-in-out;
 }
 
@@ -137,10 +138,10 @@ nav .active-toggle-menu {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    width: 600px;
+    width: 500px;
     max-width: 80%;
-    background: var(--main-color);
-    padding: 3em 5em;
+    background: var(--main-dark-color);
+    padding: 3em 4em;
     z-index: 1000;
     color: white;
     border-radius: 5px;
@@ -166,29 +167,34 @@ nav .active-toggle-menu {
 .modal-header i {
     font-size: 1.2rem;
     cursor: pointer;
+    transition: .2s ease-in-out;
+}
+
+.modal-header i:hover {
+    opacity: .8;
 }
 
 .modal input {
-    margin: .2em 0 .5em;
+    margin: .2em 0 .8em;
     width: 100%;
     padding: .2em;
 }
 
 .modal-btn {
     margin-top: .5em;
-    padding: .2em .5em;
+    padding: .3em .7em;
     outline: none;
     border: none;
     border-radius: 5px;
-    background: whitesmoke;
-    color: var(--main-color);
+    background: white;
+    color: var(--main-dark-color);
     cursor: pointer;
 }
 
 .modal-message {
     display: none;
     margin-bottom: 1em;
-    color: var(--secondary-color);
+    color: var(--accent-color);
     font-style: italic;
 }
 
@@ -228,7 +234,7 @@ nav .active-toggle-menu {
         z-index: 100;
         width: 60%;
         height: 100vh;
-        background: var(--main-color);
+        background: var(--main-dark-color);
     }
 
     nav.active {
@@ -331,7 +337,7 @@ nav .active-toggle-menu {
 
 .search-label {
     text-align: center;
-    color: var(--main-color);
+    color: var(--main-dark-color);
     font-size: var(--big-text);
 }
 
@@ -344,7 +350,7 @@ nav .active-toggle-menu {
 
 #book-name-input {
     width: 100%;
-    border: 3px solid var(--main-color);
+    border: 3px solid var(--main-dark-color);
     border-right: none;
     padding: 5px;
     height: 40px;
@@ -353,14 +359,14 @@ nav .active-toggle-menu {
     color: black;
 }
 #book-name-input:focus {
-    color: var(--main-color);
+    color: var(--main-dark-color);
 }
 
 .search-button {
     width: 40px;
     height: 40px;
-    border: 1px solid var(--main-color);
-    background: var(--main-color);
+    border: 1px solid var(--main-dark-color);
+    background: var(--main-dark-color);
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;
@@ -468,7 +474,7 @@ nav .active-toggle-menu {
 .load-btn, .view-more-btn {
     border: none;
     outline: none;
-    background: var(--main-color);
+    background: var(--main-dark-color);
     color: white;
     font-size: var(--small-text);
     padding: .5em 1em;
