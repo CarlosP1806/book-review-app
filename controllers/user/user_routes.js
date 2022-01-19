@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { authMiddleware, signToken } = require('../../utils/auth');
+
 const User = require('../../models/User');
+const Review = require('../../models/Review');
 
 router.post('/', async (req, res) => {
   try {
@@ -47,8 +49,15 @@ router.get('/me', authMiddleware, async ({ user = null, params }, res) => {
   }
 });
 
-router.get('/reviews', (req, res) => {
+router.get('/', (req, res) => {
   res.render('user_reviews.ejs');
 });
+
+// Get all reviews associated to current user
+router.get('/reviews', authMiddleware, async (req, res) => {
+  const userReviews = await Review.find({ authorId: req.user._id });
+  res.json(userReviews);
+});
+
 
 module.exports = router;
