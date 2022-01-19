@@ -16,8 +16,11 @@
     --margin-size: 6rem;
     --text-dark: rgb(40,40,40);
     --text-light: rgb(70,70,70);
-    --secondary-color: #e0ba04;
-    --main-color: #1C0760;
+    --text-white: rgb(221, 221, 221);
+    /*--secondary-color: #e0ba04;*/
+    --secondary-color: #ffd500;
+    --accent-color: #4d3ddf;
+    --main-color: #16005e;
 }
 
 a {
