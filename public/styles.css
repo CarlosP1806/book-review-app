@@ -20,6 +20,11 @@
     --main-color: #1C0760;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 @media screen and (max-width: 700px) {
     :root {
         --big-text: 1.5rem;
@@ -401,9 +406,10 @@ nav .active-toggle-menu {
 .card-description {
     font-size: var(--small-text);
     color: var(--text-light);
+    margin-bottom: .4em;
 }
 
-.load-btn {
+.load-btn, .view-more-btn {
     border: none;
     outline: none;
     background: var(--main-color);
@@ -413,6 +419,10 @@ nav .active-toggle-menu {
     border-radius: 5px;
     cursor: pointer;
     transition: .2s ease-in-out;
+}
+
+.btn-small {
+    padding: .3em .5em;
 }
 
 .load-btn:hover {

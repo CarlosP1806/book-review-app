@@ -1,16 +1,21 @@
 const router = require('express').Router();
 const { authMiddleware, signToken } = require('../../utils/auth');
+
 const User = require('../../models/User');
+const Review = require('../../models/Review');
 
 router.post('/', async (req, res) => {
-  const user = await User.create(req.body);
-
-  if (!user) {
-    res.status(400).json({ message: 'Something went wrong' });
+  try {
+    const user = await User.create(req.body);
+    if (!user) {
+      res.status(400).json({ message: 'Something went wrong' });
+    }
+    const token = signToken(user);
+    res.json({ token, user });
+  } catch(error) {
+    console.log(error);
+    res.status(500).json({ message: 'Invalid fields '});
   }
-
-  const token = signToken(user);
-  res.json({ token, user });
 });
 
 router.post('/login', async ({ body }, res) => {
@@ -21,7 +26,8 @@ router.post('/login', async ({ body }, res) => {
     res.status(400).json({ message: 'Cannot find user' });
   } else {
     // Validate password
-    if (body.password !== user.password) {
+    const correctPassword = await user.isCorrectPassword(body.password);
+    if (!correctPassword) {
       res.status(400).json({ message: 'Incorrect password' });
     } else {
       const token = signToken(user);
@@ -42,5 +48,16 @@ router.get('/me', authMiddleware, async ({ user = null, params }, res) => {
     res.json(foundUser);
   }
 });
+
+router.get('/', (req, res) => {
+  res.render('user_reviews.ejs');
+});
+
+// Get all reviews associated to current user
+router.get('/reviews', authMiddleware, async (req, res) => {
+  const userReviews = await Review.find({ authorId: req.user._id });
+  res.json(userReviews);
+});
+
 
 module.exports = router;
