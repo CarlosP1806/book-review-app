@@ -21,10 +21,6 @@ router.get('/search/:title/:cnt', (req, res) => {
     });
 });
 
-router.get('/saved', (req, res) => {
-  res.render('user_info');
-});
-
 router.get('/book/:id', async (req, res) => {
   const fetchURL = `https://www.googleapis.com/books/v1/volumes/${req.params.id}`;
   axios({

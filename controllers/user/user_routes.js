@@ -47,4 +47,8 @@ router.get('/me', authMiddleware, async ({ user = null, params }, res) => {
   }
 });
 
+router.get('/reviews', (req, res) => {
+  res.render('user_reviews.ejs');
+});
+
 module.exports = router;
