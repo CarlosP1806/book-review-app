@@ -16,22 +16,38 @@
 <body>
   <%- include("partials/navbar.ejs") %>
 
-  <article class="book-info">
-    <h2><%= bookData.volumeInfo.title %></h2>
-    <p><%= bookData.volumeInfo.description %></p>
-  </article>
+  <main class="book-info-main">
+    <article class="book-info">
+      <figure class="book-img">
+        <img src="<%= bookData.volumeInfo.imageLinks.thumbnail%>" alt="book cover">
+      </figure>
+      <div class="data-container">
+        <h2><%= bookData.volumeInfo.title %></h2>
+        <div class="author-container">
+          <% for(let i=0; i < bookData.volumeInfo.authors.length; i++) { %>
+            <span class="author">
+              <%= bookData.volumeInfo.authors[i] %>
+              <% if(i < bookData.volumeInfo.authors.length -1) { %>
+                <%= ',' %>
+              <% } %>
+            </span>
+          <% } %>
+        </div>
+        <p><%= bookData.volumeInfo.description %></p>
+      </div>
+    </article>
 
-  <section class="review-container">
-    <% if(reviews.length) { %>
-      <% for(let i = 0; i < reviews.length; i++) { %>
-        <article class="review">
-          <p class="review-text"><%= reviews[i].textContent %></p>
-        </article>
+    <section class="review-container">
+      <% if(reviews.length) { %>
+        <h2 class="title">Reviews</h2>
+        <% for(let i = 0; i < reviews.length; i++) { %>
+          <%- include("partials/book_review.ejs", { reviewData: reviews[i]}) %>
+        <% } %>
+      <% } else {%>
+        <h2 class="title">No Reviews Yet</h2>
       <% } %>
-    <% } else {%>
-      <h2>No Reviews Yet</h2>
-    <% } %>
-  </section>
+    </section>
+  </main>
 
   <script type="module" src="/navbar.js"></script>
 </body>

@@ -17,7 +17,6 @@
     --text-dark: rgb(40,40,40);
     --text-light: rgb(70,70,70);
     --text-white: rgb(221, 221, 221);
-    /*--accent-color: #e0ba04;*/
     --accent-color: #ffd500;
     --main-light-color: #4d3ddf;
     --main-dark-color: #16005e;
@@ -542,5 +541,94 @@ nav .active-toggle-menu {
     .card-image img {
         border-radius: 5px 5px 0 0;
         object-fit: cover;
+    }
+}
+
+/* ======= BOOK INFO VIEW ======= */
+.book-info-main {
+    margin: 3em var(--margin-size);
+}
+
+.book-info {
+    width: 100%;
+    background: var(--main-light-color);
+    color: whitesmoke;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5em;
+}
+
+.book-info .book-img {
+    position: relative;
+    min-width: 200px;
+}
+
+.book-info .data-container {
+    padding: 2em;
+    flex: 1;
+}
+
+.book-info .book-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.book-info .author-container {
+    margin-bottom: .5em;
+}
+
+.book-info .author {
+    color: var(--accent-color);
+    font-style: italic;
+}
+
+.review {
+    display: flex;
+}
+
+.review .review-score {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.review-score.high {
+    border: 4px solid green;
+    color: green;
+}
+.review-score.med {
+    border: 4px solid yellow;
+    color: yellow;
+}
+.review-score.low {
+    border: 4px solid red;
+    color: red;
+}
+
+@media screen and (max-width: 1000px) {
+    .book-info {
+        flex-direction: column;
+    }
+
+    .book-info .book-img {
+        width: 100%;
+        height: 400px;
+    }
+
+    .book-info .book-img img {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .book-info .data-container {
+        padding: 1em;
     }
 }
