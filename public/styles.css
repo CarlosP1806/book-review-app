@@ -589,11 +589,22 @@ nav .active-toggle-menu {
     font-style: italic;
 }
 
+.review-section .title {
+    margin-bottom: .8em;
+}
+
+.review:nth-child(2n) {
+    background-color: #cfcde2;
+}
+
 .review {
     display: flex;
+    padding: .2em;
 }
 
 .review .review-score {
+    margin-right: .2em;
+    margin-top: .2em;
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
@@ -606,12 +617,17 @@ nav .active-toggle-menu {
     color: green;
 }
 .review-score.med {
-    border: 4px solid yellow;
-    color: yellow;
+    border: 4px solid var(--accent-color);
+    color: var(--accent-color);
 }
 .review-score.low {
     border: 4px solid red;
     color: red;
+}
+
+.review .review-author {
+    color: var(--main-light-color);
+    font-style: italic;
 }
 
 @media screen and (max-width: 1000px) {

@@ -10,10 +10,13 @@
     ">
     <%= reviewData.userScore %>
   </div>
-  <p class="review-author">
-    By <%= reviewData.authorId.username %>
-  </p>
-  <p class="review-text">
-    <%= reviewData.textContent %>
-  </p>
+
+  <div class="review-content">
+    <p class="review-author">
+      <%= `By ${reviewData.authorId.username}` %>
+    </p>
+    <p class="review-text">
+      <%= reviewData.textContent %>
+    </p>
+  </div>
 </article>
