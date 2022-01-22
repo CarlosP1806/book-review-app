@@ -28,6 +28,7 @@ a {
 }
 
 .title {
+    font-size: var(--big-text);
     display: inline-block;
     position: relative;
     left: 8px;
@@ -46,6 +47,7 @@ a {
 @media screen and (max-width: 700px) {
     :root {
         --big-text: 1.5rem;
+        --med-text: 1.2rem;
         --margin-size: 3rem;
     }
 }
