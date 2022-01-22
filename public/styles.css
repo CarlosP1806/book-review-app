@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    line-height: 1.3;
+    line-height: 1.5;
 }
 
 :root {
@@ -16,13 +16,31 @@
     --margin-size: 6rem;
     --text-dark: rgb(40,40,40);
     --text-light: rgb(70,70,70);
-    --secondary-color: #e0ba04;
-    --main-color: #1C0760;
+    --text-white: rgb(221, 221, 221);
+    --accent-color: #ffd500;
+    --main-light-color: #4d3ddf;
+    --main-dark-color: #16005e;
 }
 
 a {
     text-decoration: none;
     color: inherit;
+}
+
+.title {
+    display: inline-block;
+    position: relative;
+    left: 8px;
+    color: var(--main-dark-color);
+}
+
+.title::before {
+    position: absolute;
+    left: -8px;
+    width: 5px;
+    height: 100%;
+    content: '';
+    background: var(--main-dark-color);
 }
 
 @media screen and (max-width: 700px) {
@@ -35,11 +53,12 @@ a {
 /* ======= HEADER ======= */
 header {
     display: flex;
-    margin: 0 var(--margin-size);
+    padding: 0 var(--margin-size);
     height: var(--nav-height);
+    box-shadow: 0 2px 5px 2px rgba(0,0,0,0.1);
     align-items: center;
     justify-content: space-between;
-    color: var(--main-color);
+    color: var(--main-dark-color);
     position: relative;
     overflow-x: hidden;
 }
@@ -53,6 +72,7 @@ header .logo a {
     text-decoration: none;
 }
 
+/* Render elements according to nav log state */
 nav .login-required {
     display: none;
 }
@@ -67,6 +87,7 @@ nav.logged .login-required {
 
 nav .nav-ul {
     display: flex;
+    align-items: center;
 }
 
 nav .nav-item {
@@ -76,21 +97,41 @@ nav .nav-item {
     position: relative;
 }
 
-nav .nav-item::after {
+nav .nav-text {
+    transition: .2s ease-in-out;
+}
+
+nav .nav-text:hover {
+    color: var(--main-light-color);
+}
+
+nav .nav-text::after {
     display: inline-block;
     position: absolute;
     bottom: -15%;
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: var(--main-color);
+    background-color: var(--main-light-color);
     content: '';
     transform: scale(0);
     transition: .2s ease-in-out;
 }
 
-nav .nav-item:hover::after {
+nav .nav-text:hover::after {
     transform: scale(1);
+}
+
+nav .nav-highlight {
+    border-radius: 15px;
+    padding: .5em 1.2em;
+    color: whitesmoke;
+    background: var(--main-light-color);
+    transition: .2s ease-in-out;
+}
+
+nav .nav-highlight:hover {
+    opacity: .9;
 }
 
 nav .active-toggle-menu {
@@ -112,10 +153,10 @@ nav .active-toggle-menu {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    width: 600px;
+    width: 500px;
     max-width: 80%;
-    background: var(--main-color);
-    padding: 3em 5em;
+    background: var(--main-dark-color);
+    padding: 3em 4em;
     z-index: 1000;
     color: white;
     border-radius: 5px;
@@ -141,31 +182,37 @@ nav .active-toggle-menu {
 .modal-header i {
     font-size: 1.2rem;
     cursor: pointer;
+    transition: .2s ease-in-out;
+}
+
+.modal-header i:hover {
+    opacity: .8;
 }
 
 .modal input {
-    margin: .2em 0 .5em;
+    margin: .2em 0 .8em;
     width: 100%;
     padding: .2em;
 }
 
 .modal-btn {
     margin-top: .5em;
-    padding: .2em .5em;
+    padding: .3em .7em;
     outline: none;
     border: none;
     border-radius: 5px;
-    background: whitesmoke;
-    color: var(--main-color);
+    background: white;
+    color: var(--main-dark-color);
     cursor: pointer;
 }
 
 .modal-message {
     display: none;
     margin-bottom: 1em;
-    color: var(--secondary-color);
+    color: var(--accent-color);
     font-style: italic;
 }
+
 .modal-message.active {
     display: inline-block;
 }
@@ -197,23 +244,23 @@ nav .active-toggle-menu {
         position: fixed;
         top: 0;
         right: -100%;
-        transition: .2s ease-in-out;
+        transition: .4s ease-in-out;
         height: 100%;
         z-index: 100;
+        width: 60%;
+        height: 100vh;
+        background: var(--main-dark-color);
     }
 
     nav.active {
-        width: 60%;
         right: 0;
-        height: 100vh;
-        background: var(--main-color);
     }
 
-    nav.active .active-toggle-menu {
+    nav .active-toggle-menu {
         display: inline-block;
     }
 
-    nav.active .nav-ul {
+    nav .nav-ul {
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -221,25 +268,55 @@ nav .active-toggle-menu {
         align-items: center;
     }
 
-    nav.active .nav-item {
+    nav .nav-item {
         color: white;
         margin-left: 0;
         margin-top: 1em;
         font-size: 1.2rem;
     }
 
-    nav.active .nav-item::after {
+    nav .nav-item::after {
         background: white;
     }
 
-    nav.active .active-toggle-menu {
+    nav .nav-text:hover {
+        color: whitesmoke;
+    }
+    
+    nav .nav-highlight {
+        background: none;
+        padding: 0;
+    }
+
+    nav .nav-highlight:hover {
+        opacity: 1;
+    }
+
+    nav .nav-highlight::after {
+        display: inline-block;
+        position: absolute;
+        bottom: -15%;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: whitesmoke;
+        content: '';
+        transform: scale(0);
+        transition: .2s ease-in-out;
+    }
+
+    nav .nav-highlight:hover::after {
+        transform: scale(1);
+    }
+
+    nav .active-toggle-menu {
         cursor: pointer;
         position: absolute;
         top: 2em;
         left: 2em;
     }
 
-    nav.active .active-toggle-menu i {
+    nav .active-toggle-menu i {
         color: white;
         font-size: 1.2rem;
     }
@@ -275,7 +352,7 @@ nav .active-toggle-menu {
 
 .search-label {
     text-align: center;
-    color: var(--main-color);
+    color: var(--main-dark-color);
     font-size: var(--big-text);
 }
 
@@ -288,7 +365,7 @@ nav .active-toggle-menu {
 
 #book-name-input {
     width: 100%;
-    border: 3px solid var(--main-color);
+    border: 3px solid var(--main-dark-color);
     border-right: none;
     padding: 5px;
     height: 40px;
@@ -297,14 +374,14 @@ nav .active-toggle-menu {
     color: black;
 }
 #book-name-input:focus {
-    color: var(--main-color);
+    color: var(--main-dark-color);
 }
 
 .search-button {
     width: 40px;
     height: 40px;
-    border: 1px solid var(--main-color);
-    background: var(--main-color);
+    border: 1px solid var(--main-dark-color);
+    background: var(--main-dark-color);
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;
@@ -330,7 +407,7 @@ nav .active-toggle-menu {
 
 /* ======= SEARCH RESULT SECTION ======= */
 .search-main {
-    margin: 1em var(--margin-size);
+    margin: 3em var(--margin-size);
     display: flex;
 }
 
@@ -389,6 +466,8 @@ nav .active-toggle-menu {
     top: 0;
     left: 0;
     border-radius: 5px 0 0 5px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .card-info {
@@ -397,10 +476,18 @@ nav .active-toggle-menu {
 }
 
 .card-title {
+    color: var(--main-dark-color);
     font-size: var(--med-text);
-    color: var(--text-dark);
     font-weight: 600;
-    margin-bottom: .4em;
+}
+
+.card .author-container {
+    margin-bottom: .5em;
+}
+
+.card .author {
+    color: var(--main-light-color);
+    font-style: italic;
 }
 
 .card-description {
@@ -412,9 +499,10 @@ nav .active-toggle-menu {
 .load-btn, .view-more-btn {
     border: none;
     outline: none;
-    background: var(--main-color);
-    color: white;
+    background: var(--main-light-color);
+    color: whitesmoke;
     font-size: var(--small-text);
+    font-weight: 400;
     padding: .5em 1em;
     border-radius: 5px;
     cursor: pointer;
@@ -453,5 +541,112 @@ nav .active-toggle-menu {
     .card-image img {
         border-radius: 5px 5px 0 0;
         object-fit: cover;
+    }
+}
+
+/* ======= BOOK INFO VIEW ======= */
+.book-info-main {
+    margin: 3em var(--margin-size);
+}
+
+.book-info {
+    width: 100%;
+    background: var(--main-light-color);
+    color: whitesmoke;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5em;
+}
+
+.book-info .book-img {
+    position: relative;
+    min-width: 200px;
+}
+
+.book-info .data-container {
+    padding: 2em;
+    flex: 1;
+}
+
+.book-info .book-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.book-info .author-container {
+    margin-bottom: .5em;
+}
+
+.book-info .author {
+    color: var(--accent-color);
+    font-style: italic;
+}
+
+.review-section .section-title {
+    margin-bottom: .8em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.review:nth-child(2n) {
+    background-color: #cfcde2;
+}
+
+.review {
+    display: flex;
+    padding: .2em;
+}
+
+.review .review-score {
+    margin-right: .2em;
+    margin-top: .2em;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.review-score.high {
+    border: 4px solid green;
+    color: green;
+}
+.review-score.med {
+    border: 4px solid var(--accent-color);
+    color: var(--accent-color);
+}
+.review-score.low {
+    border: 4px solid red;
+    color: red;
+}
+
+.review .review-author {
+    color: var(--main-light-color);
+    font-style: italic;
+}
+
+@media screen and (max-width: 1000px) {
+    .book-info {
+        flex-direction: column;
+    }
+
+    .book-info .book-img {
+        width: 100%;
+        height: 400px;
+    }
+
+    .book-info .book-img img {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .book-info .data-container {
+        padding: 1em;
     }
 }

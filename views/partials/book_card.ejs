@@ -4,7 +4,16 @@
   </figure>
   <article class="card-info">
     <h2 class="card-title"><%= bookData.volumeInfo.title %></h2>
-    <!-- Get only first 255 characters of description -->
+    <div class="author-container">
+      <% for(let i=0; i < bookData.volumeInfo.authors.length; i++) { %>
+        <span class="author">
+          <%= bookData.volumeInfo.authors[i] %>
+          <% if(i < bookData.volumeInfo.authors.length -1) { %>
+            <%= ',' %>
+          <% } %>
+        </span>
+      <% } %>
+    </div>
     <% let bookDesc = bookData.volumeInfo.description %>
     <p class="card-description"><%= bookDesc.substring(0, 255) %> . . .</p>
     <button id="<%= bookData.id %>" class="view-more-btn btn-small">View More</button>
