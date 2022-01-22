@@ -14,6 +14,10 @@ const reviewSchema = new Schema({
     type: Number,
     required: true
   },
+  headline: {
+    type: String,
+    required: true
+  },
   textContent: {
     type: String,
     required: true
