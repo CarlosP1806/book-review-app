@@ -15,16 +15,20 @@
 <body>
   <%- include("partials/navbar.ejs") %>
 
-    <h2>Write a review</h2>
+  <main class="write-review-main">
+    <h2 class="title">Write a review</h2>
     <form class="review-form">
-      <label for="review-score">Book score:</label>
-      <input type="number" id="review-score" min="0" max="10">
-      <label for="review-headline">Review headline:</label>
-      <input type="text" id="review-headline">
-      <label for="review-text">Book review:</label>
+      <div class="form-row">
+        <label for="review-score">Book score:</label>
+        <input type="number" id="review-score" min="0" max="10">
+        <label for="review-headline">Review headline:</label>
+        <input type="text" id="review-headline">
+      </div>
+      <label for="review-text" id="review-text-label">Book review:</label>
       <textarea id="review-text" cols="30" rows="10"></textarea>
       <button>Submit review</button>
     </form>
+  </main>
 
     <script type="module" src="/navbar.js"></script>
     <script type="module" src="/write_review.js"></script>

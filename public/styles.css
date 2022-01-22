@@ -28,7 +28,7 @@ a {
 }
 
 .title {
-    font-size: var(--big-text);
+    font-size: var(--med-text);
     display: inline-block;
     position: relative;
     left: 8px;
@@ -647,7 +647,7 @@ nav .active-toggle-menu {
 
 .review .review-headline {
     color: var(--main-dark-color);
-    font-size: var(--med-text);
+    font-size: 1.2rem;
 }
 
 .review .review-score {
@@ -694,5 +694,92 @@ nav .active-toggle-menu {
 
     .book-info .data-container {
         padding: 1em;
+    }
+}
+
+/* ======= WRITE REVIEW VIEW ======= */
+.write-review-main {
+    margin: 3em var(--margin-size);
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.review-form .form-row {
+    width: 100%;
+    display: flex;
+    margin: 1em 0;
+}
+
+.review-form label {
+    margin-right: .5em;
+    font-style: italic;
+    color: var(--text-light);
+}
+
+.review-form #review-headline {
+    flex: 1;
+}
+
+.review-form #review-score {
+    margin-right: 1em;
+}
+
+.review-form #review-text-label {
+    color: var(--main-light-color);
+    font-weight: bold;
+    font-style: normal;
+}
+
+.review-form input {
+    border: none;
+    border-bottom: 1px solid #999;
+}
+
+.review-form input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--main-light-color);
+}
+
+.review-form textarea {
+    resize: none;
+    width: 100%;
+}
+
+.review-form textarea:focus {
+    border: 1px solid var(--main-light-color);
+    outline: none;
+}
+
+.review-form button {
+    outline: none;
+    border: none;
+    background-color: var(--main-light-color);
+    color: whitesmoke;
+    padding: .5em 1.2em;
+    border-radius: 15px;
+    margin-top: 1em;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    font-size: var(--small-text);
+}
+
+.review-form button:hover {
+    opacity: .9;
+}
+
+@media screen and (max-width: 700px) {
+    .review-form .form-row {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+
+    .review-form input {
+        margin-bottom: 2em;
+        width: 100%;
     }
 }
