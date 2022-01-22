@@ -589,8 +589,10 @@ nav .active-toggle-menu {
     font-style: italic;
 }
 
-.review-section .title {
+.review-section .section-title {
     margin-bottom: .8em;
+    display: flex;
+    justify-content: space-between;
 }
 
 .review:nth-child(2n) {

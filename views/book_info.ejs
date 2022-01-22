@@ -38,13 +38,17 @@
     </article>
     
     <section class="review-section">
+      <div class="section-title">
+        <% if(reviews.length) { %>
+          <h2 class="title">Reviews</h2>
+        <% } else { %>
+          <h2 class="title">No Reviews Yet</h2>
+        <% } %>
+      </div>
       <% if(reviews.length) { %>
-        <h2 class="title">Reviews</h2>
         <% for(let i = 0; i < reviews.length; i++) { %>
           <%- include("partials/book_review.ejs", { reviewData: reviews[i]}) %>
         <% } %>
-      <% } else {%>
-        <h2 class="title">No Reviews Yet</h2>
       <% } %>
     </section>
   </main>
