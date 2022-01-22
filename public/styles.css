@@ -50,6 +50,12 @@ a {
     }
 }
 
+@media screen and (max-width: 500px) {
+    :root {
+        --margin-size: 1rem;
+    }
+}
+
 /* ======= HEADER ======= */
 header {
     display: flex;
@@ -602,6 +608,15 @@ nav .active-toggle-menu {
 .review {
     display: flex;
     padding: .2em;
+}
+
+.review p {
+    color: var(--text-light);
+}
+
+.review .review-headline {
+    color: var(--main-dark-color);
+    font-size: var(--med-text);
 }
 
 .review .review-score {
