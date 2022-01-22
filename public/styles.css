@@ -521,8 +521,8 @@ nav .active-toggle-menu {
     padding: .3em .5em;
 }
 
-.load-btn:hover {
-    letter-spacing: 1.5px;
+.load-btn:hover, .view-more-btn:hover {
+    opacity: .9;
 }
 
 @media screen and (max-width: 1000px) {
