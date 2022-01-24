@@ -30,7 +30,7 @@
     :root {
         --huge-text: 2.4rem;
         --big-text: 2rem;
-        --med-text: 1.4rem;
+        --med-text: 1.6rem;
         --small-text: 1.4rem;
         --tiny-text: 1rem;
         --margin-size: 3rem;
@@ -77,6 +77,7 @@ a {
 
 .text--accent {
     color: var(--accent-color);
+    font-style: italic;
 }
 
 .text--white {
@@ -167,7 +168,12 @@ a {
     position: relative;
 }
 
-.card__image img {
+.card__image--big {
+    width: 250px;
+    position: relative
+}
+
+.card__image img, .card__image--big img {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -181,6 +187,11 @@ a {
 .card__info {
     flex: 1;
     padding: 1em;
+}
+
+.card__info--big {
+    flex: 1;
+    padding: 2.5em;
 }
 
 .card__title {
@@ -206,14 +217,18 @@ a {
         flex-direction: column;
     }
 
-    .card__image {
+    .card__image, .card__image--big {
         width: 100%;
         height: 300px;
     }
 
-    .card__image img {
+    .card__image img, .card__image--big img {
         border-radius: 5px 5px 0 0;
         object-fit: cover;
+    }
+
+    .card__info--big {
+        padding: 1.5em 1em;
     }
 }
 
@@ -233,6 +248,30 @@ a {
 
 .section__main {
     flex: 80%;
+}
+
+.section__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3em 0 1em;
+}
+
+.section__title {
+    font-size: var(--med-text);
+    color: var(--main-dark-color);
+    position: relative;
+    left: 8px;
+}
+
+.section__title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -8px;
+    width: 5px;
+    height: 100%;
+    background-color: var(--main-dark-color);
 }
 
 @media screen and (max-width: 992px) {
@@ -555,147 +594,43 @@ header {
     margin: 0;
 }
 
-
 /* ======= BOOK INFO VIEW ======= */
-
-.book-info {
-    width: 100%;
-    background: var(--main-light-color);
-    color: whitesmoke;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2.5em;
-}
-
-.book-info .book-img {
-    position: relative;
-    min-width: 200px;
-}
-
-.book-info .data-container {
-    padding: 2em;
-    flex: 1;
-}
-
-.book-info .book-img img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px 0 0 10px;
-    object-fit: cover;
-    object-position: center;
-}
-
-.book-info .author-container {
-    margin-bottom: .5em;
-}
-
-.book-info .author {
-    color: var(--accent-color);
-    font-style: italic;
-}
-
-.review-section .section-title {
-    margin-bottom: .8em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.write-review-btn {
-    display: inline-block;
-    cursor: pointer;
-    position: relative;
-    transition: .2s ease-in-out;
-}
-
-.write-review-btn:hover {
-    color: var(--main-light-color);
-}
-
-.write-review-btn::after {
-    display: inline-block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: var(--main-light-color);
-    content: '';
-    transform: scale(0);
-    transition: .2s ease-in-out;
-}
-
-.write-review-btn:hover::after {
-    transform: scale(1);
-}
-
-.review:nth-child(2n) {
+.review-card:nth-child(2n) {
     background-color: #cfcde2;
 }
 
-.review {
+.review-card {
     display: flex;
     padding: .2em;
 }
 
-.review p {
-    color: var(--text-light);
-}
-
-.review .review-headline {
-    color: var(--main-dark-color);
-    font-size: 1.2rem;
-}
-
-.review .review-score {
+.review-card__score {
     margin-right: .2em;
     margin-top: .2em;
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
     border-radius: 50%;
     text-align: center;
     font-weight: bold;
 }
 
-.review-score.high {
+.review-card__score.high {
     border: 4px solid green;
     color: green;
 }
-.review-score.med {
+.review-card__score.med {
     border: 4px solid var(--accent-color);
     color: var(--accent-color);
 }
-.review-score.low {
+.review-card__score.low {
     border: 4px solid red;
     color: red;
 }
 
-.review .review-author {
+.review-card__author {
     color: var(--main-light-color);
     font-style: italic;
-}
-
-@media screen and (max-width: 1000px) {
-    .book-info {
-        flex-direction: column;
-    }
-
-    .book-info .book-img {
-        width: 100%;
-        height: 400px;
-    }
-
-    .book-info .book-img img {
-        border-radius: 10px 10px 0 0;
-    }
-
-    .book-info .data-container {
-        padding: 1em;
-    }
 }
 
 /* ======= WRITE REVIEW VIEW ======= */

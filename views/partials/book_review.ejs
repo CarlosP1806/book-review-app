@@ -1,5 +1,5 @@
-<article class="review">
-  <div class="review-score 
+<article class="review-card">
+  <div class="review-card__score 
   <% if(reviewData.userScore <= 5) { %>
     <%= "low" %>
   <% } else if (reviewData.userScore <= 7.5) { %>
@@ -11,14 +11,14 @@
     <%= reviewData.userScore %>
   </div>
 
-  <div class="review-content">
-    <h2 class="review-headline">
+  <div class="review-card__content">
+    <h2 class="review-card__headline text--med text--dark">
       <%= reviewData.headline %>
     </h2>
-    <p class="review-author">
+    <p class="review-card__author text text--small text--light">
       <%= `By ${reviewData.authorId.username}` %>
     </p>
-    <p class="review-text">
+    <p class="review-card__text text text--small">
       <%= reviewData.textContent %>
     </p>
   </div>
