@@ -1,12 +1,12 @@
 <div class="card">
-  <figure class="card-image">
+  <figure class="card__image">
     <img src="<%=bookData.volumeInfo.imageLinks.thumbnail %>" alt="Book cover">
   </figure>
-  <article class="card-info">
-    <h2 class="card-title"><%= bookData.volumeInfo.title %></h2>
+  <article class="card__info">
+    <h2 class="card__title text--dark"><%= bookData.volumeInfo.title %></h2>
     <div class="author-container">
       <% for(let i=0; i < bookData.volumeInfo.authors.length; i++) { %>
-        <span class="author">
+        <span class="text text--light">
           <%= bookData.volumeInfo.authors[i] %>
           <% if(i < bookData.volumeInfo.authors.length -1) { %>
             <%= ',' %>
@@ -15,7 +15,9 @@
       <% } %>
     </div>
     <% let bookDesc = bookData.volumeInfo.description %>
-    <p class="card-description"><%= bookDesc.substring(0, 255) %> . . .</p>
-    <button id="<%= bookData.id %>" class="view-more-btn btn-small">View More</button>
+    <p class="card__description text"><%= bookDesc.substring(0, 255) %> . . .</p>
+    <button id="<%= bookData.id %>" class="btn btn--primary btn--small view-more-btn">
+      View More
+    </button>
   </article>
 </div>

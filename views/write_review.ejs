@@ -15,18 +15,18 @@
 <body>
   <%- include("partials/navbar.ejs") %>
 
-  <main class="write-review-main">
-    <h2 class="title">Write a review</h2>
+  <main class="section">
+    <h2 class="section__title">Write a review</h2>
     <form class="review-form">
       <div class="form-row">
-        <label for="review-score">Book score:</label>
-        <input type="number" id="review-score" min="0" max="10">
-        <label for="review-headline">Review headline:</label>
-        <input type="text" id="review-headline">
+        <label class="text" for="review-score">Book score:</label>
+        <input class="text text--small" type="number" id="review-score" min="0" max="10">
+        <label class="text" for="review-headline">Review headline:</label>
+        <input class="text text--small" type="text" id="review-headline">
       </div>
       <label for="review-text" id="review-text-label">Book review:</label>
-      <textarea id="review-text" cols="30" rows="10"></textarea>
-      <button>Submit review</button>
+      <textarea class="text text--small" id="review-text" cols="30" rows="10"></textarea>
+      <button class="btn btn--primary btn--rounded">Submit review</button>
     </form>
   </main>
 

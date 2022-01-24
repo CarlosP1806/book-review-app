@@ -1,57 +1,67 @@
-<!-- Navbar -->
 <header>
-  <h1 class="logo"><a href="/">Best Books</a></h1>
+  <h1 class="logo"><a class="logo__text" href="/">Best Books</a></h1>
   <div class="toggle-menu">
     <i class="fa fa-bars"></i>
   </div>
-  <nav class="navbar">
-    <ul class="nav-ul">
-      <li class="nav-item nav-text"><a id="sign-up">Sign up</a></li>
-      <li class="nav-item nav-highlight login"><a class="login">Log in</a></li>
-      <li class="nav-item nav-text login-required"><a id="logout">Logout</a></li>
-      <li class="nav-item nav-highlight login-required"><a id="saved" href="/user">Your Reviews</a></li>
-      <div class="active-toggle-menu">
+  <nav class="nav">
+    <ul class="nav__ul">
+      <!-- Not logged buttons -->
+      <li class="nav__item">
+        <a class="text text--hover-highlight" id="sign-up">Sign up</a>
+      </li>
+      <li class="nav__item">
+        <button class="btn btn--primary btn--rounded nav__btn login">Log in</button>
+      </li>
+      <!-- Logged in buttons -->
+      <li class="nav__item login-required">
+        <a class="text text--hover-highlight" id="logout">Logout</a>
+      </li>
+      <li class="nav__item nav-highlight login-required">
+        <a class="btn btn--primary btn--rounded nav__btn" id="saved" href="/user">Your Reviews</a>
+      </li>
+      <!-- Toggle menu when mobile nav is active-->
+      <div class="toggle-menu--mobile-active">
         <i class="fa fa-bars"></i>
       </div>
     </ul>
   </nav>
 </header>
 
-<!-- Login/Sign up forms -->
+<!-- Login/Sign up modals -->
 <div class="overlay"></div>
 <article class="modal" id="login-modal">
-  <div class="modal-header">
-    <h2 class="modal-title">Log in</h2>
+  <div class="modal__header">
+    <h2 class="modal__title">Log in</h2>
     <i class="fa fa-times login-modal-close"></i>
   </div>
-  <div class="modal-message">
-    <p>Invalid Credentials!</p>
+  <div class="modal__message">
+    <p class="text">Invalid Credentials!</p>
   </div>
   <form class="login-form">
-    <label for="username-input">Enter username</label>
-    <input type="text" id="username-input">
-    <label for="password-input">Enter password</label>
-    <input type="password" id="password-input">
-    <button class="modal-btn">Log in</button>
+    <label class="text text--white" for="username-input">Enter username</label>
+    <input class="modal__input text--small" type="text" id="username-input">
+    <label class="text text--white" for="password-input">Enter password</label>
+    <input class="modal__input text--small" type="password" id="password-input">
+    <button class="btn btn--light btn--small">Log in</button>
   </form>
 </article>
 
 <div class="overlay"></div>
 <article class="modal" id="signup-modal">
-  <div class="modal-header">
-    <h2 class="modal-title">Create Account</h2>
+  <div class="modal__header">
+    <h2 class="modal__title">Create Account</h2>
     <i class="fa fa-times signup-modal-close"></i>
   </div>
-  <div class="modal-message">
-    <p>Invalid Fields!</p>
+  <div class="modal__message">
+    <p class="text">Invalid Fields!</p>
   </div>
   <form class="signup-form">
-    <label for="sign-email-input">Enter email</label>
-    <input type="text" id="sign-email-input">
-    <label for="username-input">Enter username</label>
-    <input type="text" id="sign-username-input">
-    <label for="password-input">Enter password</label>
-    <input type="password" id="sign-password-input">
-    <button class="modal-btn">Sign Up</button>
+    <label class="text text--white" for="sign-email-input">Enter email</label>
+    <input class="modal__input text--small" type="text" id="sign-email-input">
+    <label class="text text--white" for="username-input">Enter username</label>
+    <input class="modal__input text--small" type="text" id="sign-username-input">
+    <label class="text text--white" for="password-input">Enter password</label>
+    <input class="modal__input text--small" type="password" id="sign-password-input">
+    <button class="btn btn--light btn--small">Sign Up</button>
   </form>
 </article>

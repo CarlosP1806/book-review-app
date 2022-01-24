@@ -16,9 +16,13 @@
 <body>
   <%- include("partials/navbar.ejs") %>
 
-  <main class="search-main">
-    <aside class="search-container">
-      <h2>Displaying results for: <span id="search-title"><%= locals.title %></span></h2>
+  <main class="section section--columns">
+    <aside class="section__aside">
+      <h2 class="text">
+        Displaying results for: <span class ="text" id="search-title">
+          <%= locals.title %>
+        </span>
+      </h2>
       <form class="search-book-form search-small">
         <div class="small-form-wrapper">
           <div class="search-bar">
@@ -30,14 +34,14 @@
     </aside>
 
     <!-- Display each result as card -->
-    <section class="card-container">
+    <section class="section__main card-container">
       <% for(let i=0; i < maxCount; i++) { %>
         <!-- Only display books with complete information -->
         <% if(bookData[i] && bookData[i].volumeInfo && bookData[i].volumeInfo.imageLinks && bookData[i].volumeInfo.title && bookData[i].volumeInfo.description && bookData[i].volumeInfo.authors) { %>
           <%- include("partials/book_card.ejs", { bookData: bookData[i]}) %>
         <% } %>
       <% } %>
-      <button class="load-btn">Load More</button>
+      <button class="btn btn--primary load-btn">Load More</button>
     </section>
   </main>
   
