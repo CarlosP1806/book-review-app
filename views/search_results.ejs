@@ -36,12 +36,11 @@
     <!-- Display each result as card -->
     <section class="section__main card-container">
       <% for(let i=0; i < maxCount; i++) { %>
-        <!-- Only display books with complete information -->
         <% if(bookData[i] && bookData[i].volumeInfo && bookData[i].volumeInfo.imageLinks && bookData[i].volumeInfo.title && bookData[i].volumeInfo.description && bookData[i].volumeInfo.authors) { %>
           <%- include("partials/book_card.ejs", { bookData: bookData[i]}) %>
         <% } %>
       <% } %>
-      <button class="btn btn--primary load-btn">Load More</button>
+      <button class="btn btn--primary btn--centered load-btn">Load More</button>
     </section>
   </main>
   
