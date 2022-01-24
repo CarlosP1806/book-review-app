@@ -16,6 +16,7 @@
     --big-text: 2.4rem;
     --med-text: 1.6rem;
     --small-text: 1.4rem;
+    --tiny-text: 1.2rem;
     --nav-height: 6rem;
     --margin-size: 8rem;
     --text-dark: rgb(40,40,40);
@@ -32,6 +33,7 @@
         --big-text: 2rem;
         --med-text: 1.4rem;
         --small-text: 1.4rem;
+        --tiny-text: 1rem;
         --margin-size: 3rem;
     }
 }
@@ -53,7 +55,7 @@ a {
 }
 
 .text--small {
-    font-size: 1.2rem;
+    font-size: var(--tiny-text);
 }
 
 .text--title {
