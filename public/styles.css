@@ -158,6 +158,10 @@ a {
     border-radius: 5px 5px 5px 5px;
 }
 
+.card--bg {
+    background-color: var(--main-light-color);
+}
+
 .card__image {
     width: 150px;
     position: relative;
@@ -553,9 +557,6 @@ header {
 
 
 /* ======= BOOK INFO VIEW ======= */
-.book-info-main {
-    margin: 3em var(--margin-size);
-}
 
 .book-info {
     width: 100%;
