@@ -18,14 +18,14 @@
 
   <main class="section">
     <article class="card card--bg">
-      <figure class="card__image--big">
+      <figure class="card__image card__image--big">
         <img src="<%= bookData.volumeInfo.imageLinks.thumbnail%>" alt="book cover">
       </figure>
-      <div class="card__info--big">
+      <div class="card__info card__info--big">
         <h2 class="text text--med text--white"><%= bookData.volumeInfo.title %></h2>
         <div class="author-container">
           <% for(let i=0; i < bookData.volumeInfo.authors.length; i++) { %>
-            <span class="text text--accent">
+            <span class="text text--accent text--italic">
               <%= bookData.volumeInfo.authors[i] %>
               <% if(i < bookData.volumeInfo.authors.length -1) { %>
                 <%= ',' %>

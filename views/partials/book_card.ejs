@@ -3,10 +3,10 @@
     <img src="<%=bookData.volumeInfo.imageLinks.thumbnail %>" alt="Book cover">
   </figure>
   <article class="card__info">
-    <h2 class="card__title text--dark"><%= bookData.volumeInfo.title %></h2>
+    <h2 class="card__title text text--dark"><%= bookData.volumeInfo.title %></h2>
     <div class="author-container">
       <% for(let i=0; i < bookData.volumeInfo.authors.length; i++) { %>
-        <span class="text text--light">
+        <span class="text text--light text--italic">
           <%= bookData.volumeInfo.authors[i] %>
           <% if(i < bookData.volumeInfo.authors.length -1) { %>
             <%= ',' %>
