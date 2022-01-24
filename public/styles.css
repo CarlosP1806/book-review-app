@@ -12,6 +12,7 @@
 }
 
 :root {
+    --huge-text: 3.2rem;
     --big-text: 2.4rem;
     --med-text: 1.6rem;
     --small-text: 1.4rem;
@@ -27,6 +28,7 @@
 
 @media screen and (max-width: 768px) {
     :root {
+        --huge-text: 2.4rem;
         --big-text: 2rem;
         --med-text: 1.4rem;
         --small-text: 1.4rem;
@@ -34,14 +36,13 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
     :root {
         --margin-size: 1rem;
     }
 }
 
 /* ======= TEXT STYLES ======= */
-
 a {
     text-decoration: none;
     color: inherit;
@@ -49,6 +50,15 @@ a {
 
 .text {
     font-size: var(--small-text);
+}
+
+.text--small {
+    font-size: 1.2rem;
+}
+
+.text--title {
+    color: var(--main-dark-color);
+    font-size: var(--huge-text);
 }
 
 .text--hover-highlight {
@@ -331,7 +341,6 @@ header {
 }
 
 /* ======= BANNER SECTION ======= */
-
 .banner {
     height: calc(100vh - var(--nav-height));
     background: url('/images/book-banner.jpg');
@@ -356,8 +365,6 @@ header {
 
 .search-label {
     text-align: center;
-    color: var(--main-dark-color);
-    font-size: var(--big-text);
 }
 
 .search-bar {
@@ -393,13 +400,13 @@ header {
     font-size: 20px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 992px) {
     .form-wrapper {
         top: 25%;
     }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
     .form-wrapper {
         top: 20%;
     }
