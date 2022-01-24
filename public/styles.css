@@ -600,7 +600,7 @@ header {
 
 .review-card {
     display: flex;
-    padding: .2em;
+    padding: .5em;
 }
 
 .review-card__score {
@@ -633,10 +633,6 @@ header {
 }
 
 /* ======= WRITE REVIEW VIEW ======= */
-.write-review-main {
-    margin: 3em var(--margin-size);
-}
-
 .review-form {
     display: flex;
     flex-direction: column;
@@ -652,7 +648,6 @@ header {
 .review-form label {
     margin-right: .5em;
     font-style: italic;
-    color: var(--text-light);
 }
 
 .review-form #review-headline {
@@ -667,6 +662,7 @@ header {
     color: var(--main-light-color);
     font-weight: bold;
     font-style: normal;
+    font-size: var(--small-text);
 }
 
 .review-form input {
@@ -689,24 +685,11 @@ header {
     outline: none;
 }
 
-.review-form button {
-    outline: none;
-    border: none;
-    background-color: var(--main-light-color);
-    color: whitesmoke;
-    padding: .5em 1.2em;
-    border-radius: 15px;
+.review-form .btn {
     margin-top: 1em;
-    cursor: pointer;
-    transition: .2s ease-in-out;
-    font-size: var(--small-text);
-}
+}  
 
-.review-form button:hover {
-    opacity: .9;
-}
-
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
     .review-form .form-row {
         display: flex;
         flex-direction: column;
