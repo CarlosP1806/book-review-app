@@ -22,7 +22,7 @@ navbarElement.addEventListener('click', (event) => {
       logout();
     }
   } else {
-    if(event.target.id === 'login') {
+    if(event.target.classList.contains('login')) {
       openModal('#login-modal');
     }
     if(event.target.id === 'sign-up') {

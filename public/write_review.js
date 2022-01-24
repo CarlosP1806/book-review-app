@@ -2,6 +2,7 @@ import { getToken, loggedIn } from './auth.js';
 
 const reviewForm = document.querySelector('.review-form');
 const scoreInput = document.querySelector('#review-score');
+const headlineInput = document.querySelector('#review-headline');
 const reviewInput = document.querySelector('#review-text');
 
 function render() {
@@ -25,7 +26,7 @@ async function getUserData() {
 }
 
 // Get data of book being reviewed
-function getBookData() {
+function getBookId() {
   // Retrieve google book id from url
   const bookId = document.location.href.split('/')[4];
   return bookId;
@@ -33,18 +34,19 @@ function getBookData() {
 
 reviewForm.addEventListener('submit', async (event) => {
   event.preventDefault();
-
-  if(!scoreInput.value || !reviewInput.value) {
+  console.log(headlineInput.value);
+  if(!scoreInput.value || !reviewInput.value || !headlineInput.value) {
     return; // Must fill all inputs
   }
 
-  const bookId = getBookData();
+  const bookId = getBookId();
   const user = await getUserData();
 
   const reviewData = {
     bookId: bookId,
     authorId: user._id,
     userScore: parseInt(scoreInput.value),
+    headline: headlineInput.value,
     textContent: reviewInput.value
   };
 
