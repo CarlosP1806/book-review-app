@@ -1,19 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+/* ======= GENERAL STYLES ======= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     line-height: 1.5;
+    font-size: 12px;
 }
 
 :root {
-    --big-text: 2rem;
+    --big-text: 2.4rem;
     --med-text: 1.6rem;
-    --small-text: 1rem;
-    --nav-height: 5rem;
-    --margin-size: 6rem;
+    --small-text: 1.4rem;
+    --nav-height: 6rem;
+    --margin-size: 8rem;
     --text-dark: rgb(40,40,40);
     --text-light: rgb(70,70,70);
     --text-white: rgb(221, 221, 221);
@@ -22,32 +25,11 @@
     --main-dark-color: #16005e;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.title {
-    font-size: var(--med-text);
-    display: inline-block;
-    position: relative;
-    left: 8px;
-    color: var(--main-dark-color);
-}
-
-.title::before {
-    position: absolute;
-    left: -8px;
-    width: 5px;
-    height: 100%;
-    content: '';
-    background: var(--main-dark-color);
-}
-
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
     :root {
-        --big-text: 1.5rem;
-        --med-text: 1.2rem;
+        --big-text: 2rem;
+        --med-text: 1.4rem;
+        --small-text: 1.4rem;
         --margin-size: 3rem;
     }
 }
@@ -58,7 +40,80 @@ a {
     }
 }
 
+/* ======= TEXT STYLES ======= */
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.text {
+    font-size: var(--small-text);
+}
+
+.text--hover-highlight {
+    color: var(--main-dark-color);
+    transition: .2s ease-in-out;
+    cursor: pointer;
+    position: relative;
+}
+
+.text--hover-highlight:hover {
+    color: var(--main-light-color);
+}
+
+.text--hover-highlight::after {
+    content: "";
+    background: var(--main-light-color);
+    position: absolute;
+    left: 0;
+    bottom: -15%;
+    width: 100%;
+    height: 3px;
+    transform: scale(0);
+    transition: transform .2s ease-in-out;
+}
+
+.text--hover-highlight:hover::after {
+    transform: scale(1);
+}
+
+/* ======= BUTTON STYLES ======= */
+
+.btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: .5em 1.6em;
+    border-radius: 5px;
+    font-size: var(--small-text);
+    transition: opacity .2s ease-in-out;
+}
+
+.btn--small {
+    padding: .2em 1em;
+}
+
+.btn:hover {
+    opacity: .9;
+}
+
+.btn--primary {
+    background-color: var(--main-light-color);
+    color: whitesmoke;
+}
+
+.btn--light {
+    background-color: whitesmoke;
+    color: var(--main-dark-color);
+}
+
+.btn--rounded {
+    border-radius: 20px;
+}
+
 /* ======= HEADER ======= */
+
 header {
     display: flex;
     padding: 0 var(--margin-size);
@@ -66,93 +121,126 @@ header {
     box-shadow: 0 2px 5px 2px rgba(0,0,0,0.1);
     align-items: center;
     justify-content: space-between;
-    color: var(--main-dark-color);
     position: relative;
     overflow-x: hidden;
 }
 
-header .logo {
+.logo__text {
     font-size: var(--big-text);
+    color: var(--main-dark-color);
 }
 
-header .logo a {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* Render elements according to nav log state */
-nav .login-required {
-    display: none;
-}
-
-nav.logged .nav-item {
-    display: none;
-}
-
-nav.logged .login-required {
-    display: inline-block;
-}
-
-nav .nav-ul {
+.nav__ul {
     display: flex;
     align-items: center;
-}
-
-nav .nav-item {
     list-style: none;
-    margin-left: 1.5em;
-    cursor: pointer;
-    position: relative;
 }
 
-nav .nav-text {
-    transition: .2s ease-in-out;
+.nav__item {
+    margin-left: 2em;
 }
 
-nav .nav-text:hover {
-    color: var(--main-light-color);
-}
-
-nav .nav-text::after {
-    display: inline-block;
-    position: absolute;
-    bottom: -15%;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: var(--main-light-color);
-    content: '';
-    transform: scale(0);
-    transition: .2s ease-in-out;
-}
-
-nav .nav-text:hover::after {
-    transform: scale(1);
-}
-
-nav .nav-highlight {
-    border-radius: 15px;
-    padding: .5em 1.2em;
-    color: whitesmoke;
-    background: var(--main-light-color);
-    transition: .2s ease-in-out;
-}
-
-nav .nav-highlight:hover {
-    opacity: .9;
-}
-
-nav .active-toggle-menu {
+.nav .login-required {
     display: none;
+}
+
+.nav.logged .nav__item {
+    display: none;
+}
+
+.nav.logged .login-required {
+    display: inline-block;
+}
+
+.toggle-menu--mobile-active {
+    display: none;
+    font-size: 2rem;
 }
 
 .toggle-menu {
     cursor: pointer;
     display: none;
+    font-size: 2rem;
+    color: var(--main-dark-color);
 }
 
-.toggle-menu i {
-    font-size: 1.5rem;
+/* Make nav responsive */
+@media screen and (max-width: 700px) {
+    .toggle-menu {
+        display: inline-block;
+    }
+
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        transition: .4s ease-in-out;
+        height: 100%;
+        z-index: 100;
+        width: 60%;
+        height: 100vh;
+        background: var(--main-dark-color);
+    }
+
+    .nav.active {
+        right: 0;
+    }
+
+    .toggle-menu--mobile-active {
+        cursor: pointer;
+        color: whitesmoke;
+        display: inline-block;
+        position: absolute;
+        top: 1.4rem;
+        left: 2rem;
+    }
+
+    .nav__ul {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav__item {
+        margin-left: 0;
+        margin-top: 1em;
+    }
+
+    .nav .text--hover-highlight {
+        color: whitesmoke;
+    }
+
+    .nav .text--hover-highlight::after {
+        background: whitesmoke;
+    }
+
+    .nav__btn {
+        background: none;
+        position: relative;
+        padding: 0;
+    }
+
+    .nav__btn:hover {
+        opacity: 1;
+    }
+
+    .nav__btn::after {
+        content: "";
+        background: whitesmoke;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        transform: scale(0);
+        transition: transform .2s ease-in-out;
+    }
+
+    .nav__btn:hover::after {
+        transform: scale(1);
+    }
 }
 
 /* Modals */
@@ -166,7 +254,7 @@ nav .active-toggle-menu {
     background: var(--main-dark-color);
     padding: 3em 4em;
     z-index: 1000;
-    color: white;
+    color: whitesmoke;
     border-radius: 5px;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1);
     transition: .5s ease-in-out;
@@ -176,53 +264,46 @@ nav .active-toggle-menu {
     transform: translate(-50%, -50%) scale(1);
 }
 
-.modal-header {
+.modal__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1em;
 }
 
-.modal-title {
+.modal__title {
     font-size: var(--big-text);
 }
 
-.modal-header i {
-    font-size: 1.2rem;
+.modal__header i {
+    font-size: 1.8rem;
     cursor: pointer;
     transition: .2s ease-in-out;
 }
 
-.modal-header i:hover {
+.modal__header i:hover {
     opacity: .8;
 }
 
-.modal input {
+.modal__input {
     margin: .2em 0 .8em;
     width: 100%;
     padding: .2em;
 }
 
-.modal-btn {
-    margin-top: .5em;
-    padding: .3em .7em;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    background: white;
-    color: var(--main-dark-color);
-    cursor: pointer;
-}
-
-.modal-message {
+.modal__message {
     display: none;
     margin-bottom: 1em;
     color: var(--accent-color);
     font-style: italic;
 }
 
-.modal-message.active {
+.modal__message.active {
     display: inline-block;
+}
+
+.modal .btn {
+    margin-top: .6em;
 }
 
 .overlay {
@@ -242,93 +323,8 @@ nav .active-toggle-menu {
     pointer-events: all;
 }
 
-/* Make nav responsive */
-@media screen and (max-width: 700px) {
-    .toggle-menu {
-        display: inline-block;
-    }
-
-    nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        transition: .4s ease-in-out;
-        height: 100%;
-        z-index: 100;
-        width: 60%;
-        height: 100vh;
-        background: var(--main-dark-color);
-    }
-
-    nav.active {
-        right: 0;
-    }
-
-    nav .active-toggle-menu {
-        display: inline-block;
-    }
-
-    nav .nav-ul {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    nav .nav-item {
-        color: white;
-        margin-left: 0;
-        margin-top: 1em;
-        font-size: 1.2rem;
-    }
-
-    nav .nav-item::after {
-        background: white;
-    }
-
-    nav .nav-text:hover {
-        color: whitesmoke;
-    }
-    
-    nav .nav-highlight {
-        background: none;
-        padding: 0;
-    }
-
-    nav .nav-highlight:hover {
-        opacity: 1;
-    }
-
-    nav .nav-highlight::after {
-        display: inline-block;
-        position: absolute;
-        bottom: -15%;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background-color: whitesmoke;
-        content: '';
-        transform: scale(0);
-        transition: .2s ease-in-out;
-    }
-
-    nav .nav-highlight:hover::after {
-        transform: scale(1);
-    }
-
-    nav .active-toggle-menu {
-        cursor: pointer;
-        position: absolute;
-        top: 2em;
-        left: 2em;
-    }
-
-    nav .active-toggle-menu i {
-        color: white;
-        font-size: 1.2rem;
-    }
-
+/* Make modal responsive */
+@media screen and (max-width: 768px) {
     .modal {
         padding: 3em 1em;
     }

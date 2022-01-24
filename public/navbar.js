@@ -1,8 +1,8 @@
-import { getToken, loggedIn, logout } from './auth.js';
+import { loggedIn, logout } from './auth.js';
 
-const navbarElement = document.querySelector('.navbar');
+const navbarElement = document.querySelector('.nav');
 const toggleMenuElement = document.querySelector('.toggle-menu');
-const activeToggleMenuElement = document.querySelector('.active-toggle-menu');
+const activeToggleMenuElement = document.querySelector('.toggle-menu--mobile-active');
 const overlayElement = document.querySelector('.overlay');
 
 // Respond to menu click (responsive nav)
@@ -46,7 +46,7 @@ function openModal(modal) {
 
 function closeModal(modal) {
   const currentModal = document.querySelector(modal);
-  const modalMessage = currentModal.querySelector('.modal-message');
+  const modalMessage = currentModal.querySelector('.modal__message');
   currentModal.classList.remove('active');
   modalMessage.classList.remove('active');
   overlayElement.classList.remove('active');
@@ -86,7 +86,7 @@ loginForm.addEventListener('submit', async (event) => {
     });
 
     if (!response.ok) {
-      const message = loginModal.querySelector('.modal-message');
+      const message = loginModal.querySelector('.modal__message');
       message.classList.add('active');
       throw new Error('Invalid Credentials');
     }
@@ -128,7 +128,7 @@ signupForm.addEventListener('submit', async (event) => {
     });
 
     if(!response.ok) {
-      const message = signupModal.querySelector('.modal-message');
+      const message = signupModal.querySelector('.modal__message');
       message.classList.add('active');
       throw new Error('Invalid Fields');
     }
