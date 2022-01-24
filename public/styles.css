@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 /* ======= GENERAL STYLES ======= */
-
 * {
     margin: 0;
     padding: 0;
@@ -188,6 +187,12 @@ a {
 
 .btn--rounded {
     border-radius: 20px;
+}
+
+.btn--centered {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .btn:hover {
@@ -626,6 +631,10 @@ header {
 .review-card__author {
     color: var(--main-light-color);
     font-style: italic;
+}
+
+.review-card__content {
+    flex: 1;
 }
 
 /* ======= WRITE REVIEW VIEW ======= */
