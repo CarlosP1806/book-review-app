@@ -25,7 +25,7 @@
         <h2 class="text text--med text--white"><%= bookData.volumeInfo.title %></h2>
         <div class="author-container">
           <% for(let i=0; i < bookData.volumeInfo.authors.length; i++) { %>
-            <span class="text text--small text--accent">
+            <span class="text text--accent">
               <%= bookData.volumeInfo.authors[i] %>
               <% if(i < bookData.volumeInfo.authors.length -1) { %>
                 <%= ',' %>
@@ -33,7 +33,7 @@
             </span>
           <% } %>
         </div>
-        <p class="text text--small text--white"><%= bookData.volumeInfo.description %></p>
+        <p class="text text--white"><%= bookData.volumeInfo.description %></p>
       </div>
     </article>
     
