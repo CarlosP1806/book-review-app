@@ -32,9 +32,9 @@ router.get('/book/:id', async (req, res) => {
 
       // Remove google books html tags using regex
       bookData.volumeInfo.description = 
-        bookData.volumeInfo.description.replaceAll(/<\/?\w+>/ig,'');
+        bookData.volumeInfo.description.replace(/<\/?\w+>/ig,'');
       bookData.volumeInfo.description =
-        bookData.volumeInfo.description.replaceAll(/&quot;/ig, '"');
+        bookData.volumeInfo.description.replace(/&quot;/ig, '"');
 
       const reviews = await Review.find({bookId: bookData.id}).populate('authorId');
       res.render('book_info', { bookData: bookData, reviews: reviews });
