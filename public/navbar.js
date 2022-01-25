@@ -145,12 +145,19 @@ signupForm.addEventListener('submit', async (event) => {
 });
 
 // Render navbar elements depending on user logged in
+const signLi = document.querySelector('#sign-li');
+const loginLi = document.querySelector('#login-li');
+const logoutLi = document.querySelector('#logout-li');
+const reviewsLi = document.querySelector('#reviews-li');
+
 function renderNavbar() {
   if(loggedIn()) {
-    navbarElement.classList.add('logged');
+    logoutLi.classList.remove('nav--hidden');
+    reviewsLi.classList.remove('nav--hidden');
   }
   else {
-    navbarElement.classList.remove('logged');
+    signLi.classList.remove('nav--hidden');
+    loginLi.classList.remove('nav--hidden');
   }
 }
 

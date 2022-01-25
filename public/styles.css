@@ -313,16 +313,8 @@ header {
     margin-left: 2em;
 }
 
-.nav .login-required {
+.nav--hidden {
     display: none;
-}
-
-.nav.logged .nav__item {
-    display: none;
-}
-
-.nav.logged .login-required {
-    display: inline-block;
 }
 
 .toggle-menu--mobile-active {
