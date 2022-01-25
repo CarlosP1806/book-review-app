@@ -6,17 +6,17 @@
   <nav class="nav">
     <ul class="nav__ul">
       <!-- Not logged buttons -->
-      <li class="nav__item">
+      <li class="nav__item nav--hidden" id="sign-li">
         <a class="text text--hover-highlight" id="sign-up">Sign up</a>
       </li>
-      <li class="nav__item">
+      <li class="nav__item nav--hidden" id="login-li">
         <button class="btn btn--primary btn--rounded nav__btn login">Log in</button>
       </li>
       <!-- Logged in buttons -->
-      <li class="nav__item login-required">
+      <li class="nav__item nav--hidden" id="logout-li">
         <a class="text text--hover-highlight" id="logout">Logout</a>
       </li>
-      <li class="nav__item nav-highlight login-required">
+      <li class="nav__item nav--hidden" id="reviews-li">
         <a class="btn btn--primary btn--rounded nav__btn" id="saved" href="/user">Your Reviews</a>
       </li>
       <!-- Toggle menu when mobile nav is active-->
