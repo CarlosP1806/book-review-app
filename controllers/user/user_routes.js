@@ -59,5 +59,4 @@ router.get('/reviews', authMiddleware, async (req, res) => {
   res.json(userReviews);
 });
 
-
 module.exports = router;

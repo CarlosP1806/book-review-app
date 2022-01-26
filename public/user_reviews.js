@@ -85,18 +85,5 @@ function createReviewCard(review) {
   return reviewContainer;
 }
 
-// Fetch the information for current user
-async function getUserData() {
-  const token = loggedIn() ? getToken() : null;
-  let response = await fetch('/user/me', {
-    headers: {
-      'Content-Type': 'application/json',
-      authorization: `Bearer ${token}`,
-    },
-  });
-  response = await response.json();
-  return response;
-}
-
 // Render elements when view loads
 render();
