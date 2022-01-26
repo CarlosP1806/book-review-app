@@ -27,7 +27,7 @@ I was motivated to build this project in order to acquire or strenghten the foll
 - Learn to use Json Web Tokens to create an authentication API
 - Demonstrate knowledge on the usage of third party APIs
 - Show proficiency in the creation of a NoSQL database
-- Showcase my ability in creating a web design using plain JavaScript and CSS (no frameworks)
+- Showcase my ability in web design using plain JavaScript and CSS (no frameworks)
 
 ## ⚙️ Functionality
 In order to get access to the full app experience, users must first create an account by providing basic credentials. Once logged in, type the name of desired book in searchbar. In the results view, a summary of each result's information will appear in the form of a card. To write a review, click on the 'View more' button. A new view showcasing the full book's information will render, and there the user can either read other reviews or write their own. Finally, to modify or delete existing reviews, click on the 'Your reviews' button. Sample images of the app's functionality are attached below.
