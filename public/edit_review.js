@@ -44,7 +44,7 @@ reviewForm.addEventListener('submit', async event => {
     body: JSON.stringify(reviewData)
   });
 
-  document.location.href = `/user`;
+  window.location.replace(`/user`);
 });
 
 // Get the information from current user
@@ -80,7 +80,7 @@ deleteReviewBtn.addEventListener('click', async event => {
     }
   });
 
-  document.location.href = '/user';
+  window.location.replace('/user');
 });
 
 render();
