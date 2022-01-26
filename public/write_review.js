@@ -34,7 +34,6 @@ function getBookId() {
 
 reviewForm.addEventListener('submit', async (event) => {
   event.preventDefault();
-  console.log(headlineInput.value);
   if(!scoreInput.value || !reviewInput.value || !headlineInput.value) {
     return; // Must fill all inputs
   }

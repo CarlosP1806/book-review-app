@@ -7,13 +7,6 @@ async function render() {
     document.location.href = '/';
     return;
   }
-  const userData = await getUserData();
-
-  const welcomeTitle = document.createElement('h2');
-  welcomeTitle.textContent = userData.username;
-  const dashboard = document.querySelector('.user-dashboard');
-  dashboard.append(welcomeTitle);
-
   renderReviews();
 }
 
@@ -29,12 +22,31 @@ async function renderReviews() {
   userReviews = await userReviews.json();
 
   userReviews.forEach(review => {
-    const reviewContainer = document.createElement('article');
-    const reviewContent = document.createElement('p');
-    reviewContent.textContent = review.textContent;
-    reviewContainer.appendChild(reviewContent);
-    userDashboardElement.appendChild(reviewContainer);
+    const reviewCard = createReviewCard(review);
+    userDashboardElement.appendChild(reviewCard);
   });
+}
+
+function createReviewCard(review) {
+  const reviewContainer = document.createElement('article');
+
+  // Add headline
+  const reviewHeader = document.createElement('h3');
+  reviewHeader.textContent = review.headline;
+  reviewContainer.appendChild(reviewHeader);
+
+  // Add review text
+  const reviewContent = document.createElement('p');
+  reviewContent.textContent = review.textContent;
+  reviewContainer.appendChild(reviewContent);
+
+  // Add edit button
+  const reviewButton = document.createElement('button');
+  reviewButton.id = review._id;
+  reviewButton.onclick = () => { document.location.href = `review/edit/${review._id}` };
+  reviewContainer.appendChild(reviewButton);
+  
+  return reviewContainer;
 }
 
 // Fetch the information for current user
