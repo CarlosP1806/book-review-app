@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/search/:title/:cnt', (req, res) => {
-  // Fetch google books api to get data
   const fetchURL = `https://www.googleapis.com/books/v1/volumes?q=${req.params.title}&key=${process.env.API_KEY}&maxResults=40`;
   axios({
     url: fetchURL,
@@ -17,6 +16,7 @@ router.get('/search/:title/:cnt', (req, res) => {
   })
     .then(response => {
       const bookData = response.data.items;
+      if(!bookData) { res.status(404).render('homepage'); return; }
       res.render('search_results', { title: req.params.title, bookData: bookData, maxCount: req.params.cnt * 10 });
     });
 });
@@ -49,8 +49,18 @@ router.get('/book/:id/review', (req, res) => {
   })
     .then(response => {
       const bookData = response.data;
-      res.render('write_review', { bookData: bookData });
+      res.render('write_review', { edit: false, reviewData: null });
     })
+});
+
+router.get('/review/:id', async (req, res) => {
+  const review = await Review.find({ _id: req.params.id });
+  res.json(review);
+});
+
+router.get('/review/edit/:id', async (req, res) => {
+  const review = await Review.find({ _id: req.params.id });
+  res.render('write_review', { edit: true, reviewData: review });
 });
 
 router.post('/review', async (req, res) => {
@@ -58,6 +68,16 @@ router.post('/review', async (req, res) => {
   if(!review) {
     res.status(400).json({ message: 'something went wrong' });
   }
+  res.json(review);
+});
+
+router.put('/review/:id', async (req, res) => {
+  const review = await Review.findByIdAndUpdate( req.params.id, req.body);
+  res.json(review);
+});
+
+router.delete('/review/:id', async (req, res) => {
+  const review = await Review.findByIdAndDelete(req.params.id);
   res.json(review);
 });
 

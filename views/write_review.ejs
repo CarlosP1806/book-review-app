@@ -20,16 +20,33 @@
     <form class="review-form">
       <div class="form-row">
         <label class="text" for="review-score">Book score:</label>
-        <input class="text text--small" type="number" id="review-score" min="0" max="10">
+        <input class="text text--small" type="number" id="review-score" min="0" max="10"
+          <% if(edit) { %>
+            value="<%= reviewData[0].userScore %>"
+          <% } %>
+        >
         <label class="text" for="review-headline">Review headline:</label>
-        <input class="text text--small" type="text" id="review-headline">
+        <input class="text text--small" type="text" id="review-headline"
+          <% if(edit) { %>
+            value="<%= reviewData[0].headline %>"
+          <% } %>
+        >
       </div>
       <label for="review-text" id="review-text-label">Book review:</label>
-      <textarea class="text text--small" id="review-text" cols="30" rows="10"></textarea>
-      <button class="btn btn--primary btn--rounded">Submit review</button>
+      <textarea class="text text--small" id="review-text" cols="30" rows="10" value="10"><% if(edit) { %><%= reviewData[0].textContent %><% } %></textarea>
+      <div class="form__buttons">
+        <button type="submit" class="btn btn--primary btn--rounded">Submit review</button>
+        <% if(edit) { %>
+          <button type="button" class="btn btn--danger" id="btn--delete">Delete review</button>
+        <% } %>
+      </div>
     </form>
   </main>
 
-    <script type="module" src="/navbar.js"></script>
+  <script type="module" src="/navbar.js"></script>
+  <% if(!edit) { %>
     <script type="module" src="/write_review.js"></script>
+  <% } else { %>
+    <script type="module" src="/edit_review.js"></script>
+  <% } %>
 </body>

@@ -189,6 +189,10 @@ a {
     border-radius: 20px;
 }
 
+.btn--rounded-bottom {
+    border-radius: 2px 2px 5px 5px;
+}
+
 .btn--centered {
     position: relative;
     left: 50%;
@@ -202,6 +206,12 @@ a {
 .btn--primary {
     background-color: var(--main-light-color);
     color: whitesmoke;
+}
+
+.btn--danger {
+    background-color: crimson;
+    color: whitesmoke;
+    margin-left: 1em;
 }
 
 .btn--light {
@@ -219,8 +229,28 @@ a {
     border-radius: 5px 5px 5px 5px;
 }
 
+.card--vertical {
+    flex-direction: column;
+    min-height: auto;
+    width: 350px;
+    box-shadow: 0 3px 3px 3px rgba(0,0,0,0.1);
+}
+
 .card--bg {
     background-color: var(--main-light-color);
+}
+
+.card__header {
+    display: flex;
+    margin-bottom: .8em;
+}
+
+.card__header h2 {
+    flex: 1;
+}
+
+.card__content {
+    padding: 1.2em;
 }
 
 .card__image {
@@ -697,4 +727,12 @@ header {
         margin-bottom: 2em;
         width: 100%;
     }
+}
+
+/* ======= USER REVIEWS ======= */
+.user-dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2em;
 }
