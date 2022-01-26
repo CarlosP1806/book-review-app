@@ -31,3 +31,7 @@ I was motivated to build this project in order to acquire or strenghten the foll
 
 ## ⚙️ Functionality
 In order to get access to the full app experience, users must first create an account by providing basic credentials. Once logged in, type the name of desired book in searchbar. In the results view, a summary of each result's information will appear in the form of a card. To write a review, click on the 'View more' button. A new view showcasing the full book's information will render, and there the user can either read other reviews or write their own. Finally, to modify or delete existing reviews, click on the 'Your reviews' button. Sample images of the app's functionality are attached below.
+![Captura de pantalla de 2022-01-26 17-15-59](https://user-images.githubusercontent.com/75866274/151263233-988dfa86-1227-43ad-bfb1-4b12aa77a5c7.png)
+![Captura de pantalla de 2022-01-26 17-16-07](https://user-images.githubusercontent.com/75866274/151263241-10170bcf-4086-4107-9202-24515a253afe.png)
+![Captura de pantalla de 2022-01-26 17-16-19](https://user-images.githubusercontent.com/75866274/151263244-3fa61510-bf10-4034-9144-c8d9086f0087.png)
+
