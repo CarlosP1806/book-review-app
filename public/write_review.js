@@ -26,11 +26,19 @@ async function getUserData() {
 }
 
 // Get data of book being reviewed
-function getBookId() {
+async function getBookData() {
   // Retrieve google book id from url
   const bookId = document.location.href.split('/')[4];
-  return bookId;
+
+  let bookFetchResponse =
+    await fetch(`https://www.googleapis.com/books/v1/volumes/${bookId}`);
+  bookFetchResponse = await bookFetchResponse.json();
+  const title = bookFetchResponse.volumeInfo.title
+
+
+  return { bookId, title };
 }
+
 
 reviewForm.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -38,11 +46,12 @@ reviewForm.addEventListener('submit', async (event) => {
     return; // Must fill all inputs
   }
 
-  const bookId = getBookId();
+  const {bookId, title} = await getBookData();
   const user = await getUserData();
 
   const reviewData = {
     bookId: bookId,
+    bookTitle: title,
     authorId: user._id,
     userScore: parseInt(scoreInput.value),
     headline: headlineInput.value,
