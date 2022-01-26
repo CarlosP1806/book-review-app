@@ -204,6 +204,12 @@ a {
     color: whitesmoke;
 }
 
+.btn--danger {
+    background-color: crimson;
+    color: whitesmoke;
+    margin-left: 1em;
+}
+
 .btn--light {
     background-color: whitesmoke;
     color: var(--main-dark-color);

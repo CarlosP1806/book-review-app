@@ -34,10 +34,12 @@
       </div>
       <label for="review-text" id="review-text-label">Book review:</label>
       <textarea class="text text--small" id="review-text" cols="30" rows="10" value="10"><% if(edit) { %><%= reviewData[0].textContent %><% } %></textarea>
-      <button type="submit" class="btn btn--primary btn--rounded">Submit review</button>
-      <% if(edit) { %>
-        <button type="button" class="btn" id="btn--delete">Delete review</button>
-      <% } %>
+      <div class="form__buttons">
+        <button type="submit" class="btn btn--primary btn--rounded">Submit review</button>
+        <% if(edit) { %>
+          <button type="button" class="btn btn--danger" id="btn--delete">Delete review</button>
+        <% } %>
+      </div>
     </form>
   </main>
 
