@@ -5,6 +5,7 @@ const cardContainerElement = document.querySelector('.card-container');
 // Handle new search request
 searchBookForm.addEventListener('submit', (event) => {
   event.preventDefault();
+  if(!searchBookInput.value) return;
   document.location.href = `/search/${searchBookInput.value}/1`;
 });
 

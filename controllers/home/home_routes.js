@@ -16,6 +16,7 @@ router.get('/search/:title/:cnt', (req, res) => {
   })
     .then(response => {
       const bookData = response.data.items;
+      if(!bookData) { res.status(404).render('homepage'); return; }
       res.render('search_results', { title: req.params.title, bookData: bookData, maxCount: req.params.cnt * 10 });
     });
 });
