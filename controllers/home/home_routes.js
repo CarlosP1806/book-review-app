@@ -53,32 +53,4 @@ router.get('/book/:id/review', (req, res) => {
     })
 });
 
-router.get('/review/:id', async (req, res) => {
-  const review = await Review.find({ _id: req.params.id });
-  res.json(review);
-});
-
-router.get('/review/edit/:id', async (req, res) => {
-  const review = await Review.find({ _id: req.params.id });
-  res.render('write_review', { edit: true, reviewData: review });
-});
-
-router.post('/review', async (req, res) => {
-  const review = await Review.create(req.body);
-  if(!review) {
-    res.status(400).json({ message: 'something went wrong' });
-  }
-  res.json(review);
-});
-
-router.put('/review/:id', async (req, res) => {
-  const review = await Review.findByIdAndUpdate( req.params.id, req.body);
-  res.json(review);
-});
-
-router.delete('/review/:id', async (req, res) => {
-  const review = await Review.findByIdAndDelete(req.params.id);
-  res.json(review);
-});
-
 module.exports = router;
